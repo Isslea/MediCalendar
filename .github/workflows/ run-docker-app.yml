@@ -25,4 +25,4 @@ jobs:
         run: docker build --rm -t mediczuwacz ./mediApp
 
       - name: Run tasks using Python
-        run: python ./mediApp/run_tasks.py
+        run: python ./mediApp/run_task.py
