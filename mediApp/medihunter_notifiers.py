@@ -37,11 +37,13 @@ def pushover_notify(message, title: str = None):
 
 def telegram_notify(message, title: str = None):
     try:
+        print("Started sending telegram")
         if title:
             message = f"<b>{title}</b>\n{message}"
 
         r = telegram.notify(message=message,
                             parse_mode='html')
+        print(r)
     except BadArguments as e:
         print(f'Telegram notifications require NOTIFIERS_TELEGRAM_CHAT_ID'
               f' and NOTIFIERS_TELEGRAM_TOKEN environments to be exported. Detailed exception:\n{e}')
@@ -49,6 +51,8 @@ def telegram_notify(message, title: str = None):
 
     if r.status != 'Success':
         print(f'Telegram notification failed\n{r.errors}')
+    else:
+        print("Telegram notification sent successfully")
 
 def xmpp_notify(message):
     try:
