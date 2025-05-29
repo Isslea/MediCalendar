@@ -187,12 +187,15 @@ class Notifier:
     def send_notification(appointments, notifier, title):
         """Send a notification with formatted appointments."""
         print("hello", notifier)
+        notifier = notifier.strip()
+        print("hello2", notifier)
         message = Notifier.format_appointments(appointments)
         if notifier == "pushbullet":
             pushbullet_notify(message, title)
         elif notifier == "pushover":
             pushover_notify(message, title)
         elif notifier == "telegram":
+            print("sending")
             telegram_notify(message, title)
         elif notifier == "xmpp":
             xmpp_notify(message)
