@@ -24,5 +24,5 @@ jobs:
       - name: Build Docker image (mediczuwacz)
         run: docker build --rm -t mediczuwacz ./mediApp
 
-      - name: Run the container
-        run: docker run --rm --env-file=./mediApp/.env mediczuwacz find-appointment -r $REGION -s 4798  -d 147484
+      - name: Run tasks using Python
+        run: python ./mediApp/run_tasks.py
