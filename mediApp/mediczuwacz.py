@@ -186,9 +186,7 @@ class Notifier:
     @staticmethod
     def send_notification(appointments, notifier, title):
         """Send a notification with formatted appointments."""
-        print("hello", notifier)
         notifier = notifier.strip()
-        print("hello2", notifier)
         message = Notifier.format_appointments(appointments)
         if notifier == "pushbullet":
             pushbullet_notify(message, title)
@@ -290,7 +288,6 @@ def main():
     
             # Send notification if appointments are found
             if new_appointments:
-                print("hello new apps",)
                 Notifier.send_notification(new_appointments, args.notification, args.title)
 
             if args.interval:
