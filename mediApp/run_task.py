@@ -17,6 +17,8 @@ with open('./mediApp/params.csv') as f:
             'find-appointment',
             '-r 202',
             '-s', row['service_id'],
-            '-d', row['doctor_id']
+            '-d', row['doctor_id'],
+            '-n telegram',
+            '-t', row['name']
         ]
         subprocess.run(cmd, check=True)
