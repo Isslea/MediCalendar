@@ -1,2 +1,3 @@
-service_id,doctor_id
-4798,147484
+run,service_id,doctor_id,name
+yes,4798,147484,ginekolog dobra
+no,4798,147484,ginekolog zła
