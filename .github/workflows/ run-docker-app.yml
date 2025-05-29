@@ -1,0 +1,20 @@
+name: Run My Docker App Every 15 Minutes
+
+on:
+  schedule:
+    - cron: "*/15 * * * *" # every 15 minutes
+  workflow_dispatch: # manual trigger
+
+jobs:
+  run-app:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Build Docker image (mediczuwacz)
+        run: docker build --rm -t mediczuwacz ./mediApp
+
+      - name: Run the container
+        run: docker run --rm --env-file=.env mediczuwacz find-appointment -r 202 -s 4798  -d 147484
