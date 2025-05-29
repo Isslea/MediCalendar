@@ -5,9 +5,9 @@ with open('./mediApp/params.csv') as f:
     reader = csv.DictReader(f)
     for row in reader:
         if row['run'].strip().lower() != 'yes':
-            print(f"⏭️ Skipping row: {row[name]}")
+            print(f"⏭️ Skipping row: {row['name']}")
             continue
-            
+
         cmd = [
             'docker', 'run', '--rm',
             '--env-file=./mediApp/.env',
