@@ -5,9 +5,6 @@ on:
     - cron: "*/15 * * * *" # every 15 minutes
   workflow_dispatch: # manual trigger
 
-env:
-  REGION: "202"
-
 jobs:
   run-app:
     runs-on: ubuntu-latest
@@ -20,7 +17,7 @@ jobs:
         run: |
           echo "MEDICOVER_USER=${{ secrets.MEDICOVER_USER }}" > ./mediApp/.env
           echo "MEDICOVER_PASS=${{ secrets.MEDICOVER_PASS }}" >> ./mediApp/.env
-          echo "NOTIFIERS_TELEGRAM_TOKEN==${{ secrets.TELEGRAM_TOKEN }}" >> ./mediApp/.env
+          echo "NOTIFIERS_TELEGRAM_TOKEN=${{ secrets.TELEGRAM_TOKEN }}" >> ./mediApp/.env
           echo "NOTIFIERS_TELEGRAM_CHAT_ID=${{ secrets.TELEGRAM_ID }}" >> ./mediApp/.env
           
       - name: Build Docker image (mediczuwacz)
