@@ -5,6 +5,9 @@ on:
     - cron: "*/15 * * * *" # every 15 minutes
   workflow_dispatch: # manual trigger
 
+env:
+  REGION: "202"
+
 jobs:
   run-app:
     runs-on: ubuntu-latest
@@ -22,4 +25,4 @@ jobs:
         run: docker build --rm -t mediczuwacz ./mediApp
 
       - name: Run the container
-        run: docker run --rm --env-file=./mediApp/.env mediczuwacz find-appointment -r 202 -s 4798  -d 147484
+        run: docker run --rm --env-file=./mediApp/.env mediczuwacz find-appointment -r $REGION -s 4798  -d 147484
