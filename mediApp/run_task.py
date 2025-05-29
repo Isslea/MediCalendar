@@ -20,5 +20,4 @@ with open('./mediApp/params.csv') as f:
             '-d', row['doctor_id'],
             '-n telegram'
         ]
-        print(f"Running cmd {cmd}")
         subprocess.run(cmd, check=True)
