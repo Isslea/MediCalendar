@@ -13,6 +13,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Create .env file with secrets
+        run: |
+          echo "MEDICOVER_USER=${{ secrets.MEDICOVER_USER }}" > ./mediApp/.env
+          echo "MEDICOVER_PASS=${{ secrets.MEDICOVER_PASS }}" >> ./mediApp/.env
+          
       - name: Build Docker image (mediczuwacz)
         run: docker build --rm -t mediczuwacz ./mediApp
 
