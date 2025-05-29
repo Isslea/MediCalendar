@@ -17,4 +17,4 @@ jobs:
         run: docker build --rm -t mediczuwacz ./mediApp
 
       - name: Run the container
-        run: docker run --rm --env-file=.env mediczuwacz find-appointment -r 202 -s 4798  -d 147484
+        run: docker run --rm --env-file=./mediApp/.env mediczuwacz find-appointment -r 202 -s 4798  -d 147484
