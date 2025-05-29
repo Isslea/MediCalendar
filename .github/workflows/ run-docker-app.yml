@@ -2,8 +2,7 @@ name: Run My Docker App Every 15 Minutes
 
 on:
   schedule:
-    - cron: "*/15 * * * *" # every 15 minutes
-  workflow_dispatch: # manual trigger
+    - cron: "*/1 * * * *" # every 15 minutes
 
 jobs:
   run-app:

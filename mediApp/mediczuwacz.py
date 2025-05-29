@@ -193,7 +193,6 @@ class Notifier:
         elif notifier == "pushover":
             pushover_notify(message, title)
         elif notifier == "telegram":
-            print("sending")
             telegram_notify(message, title)
         elif notifier == "xmpp":
             xmpp_notify(message)
