@@ -18,7 +18,6 @@ with open('./mediApp/params.csv') as f:
             '-r 202',
             '-s', row['service_id'],
             '-d', row['doctor_id'],
-            '-n telegram',
-            '-t "lol"'
+            '-n telegram'
         ]
         subprocess.run(cmd, check=True)
