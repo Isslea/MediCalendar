@@ -168,17 +168,13 @@ class Notifier:
         messages = []
         for appointment in appointments:
             date = appointment.get("appointmentDate", "N/A")
-            clinic = appointment.get("clinic", {}).get("name", "N/A")
             doctor = appointment.get("doctor", {}).get("name", "N/A")
             specialty = appointment.get("specialty", {}).get("name", "N/A")
-            doctor_languages = appointment.get("doctorLanguages", [])
-            languages = ", ".join([lang.get("name", "N/A") for lang in doctor_languages]) if doctor_languages else "N/A"
+
             message = (
                 f"Date: {date}\n"
-                f"Clinic: {clinic}\n"
                 f"Doctor: {doctor}\n"
-                f"Languages: {languages}\n" +
-                f"Specialty: {specialty}\n" + "-" * 50
+                f"Specialty: {specialty}\n" + "-" * 25
             )
             messages.append(message)
         return "\n".join(messages)
