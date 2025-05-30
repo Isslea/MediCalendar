@@ -193,7 +193,9 @@ class Notifier:
 
         messages = []
         for date, items in sorted(grouped.items()):
-            doctor = items[0].get("doctor", {}).get("name", "N/A")
+            doctor_names = sorted(set(item.get("doctor", {}).get("name", "N/A") for item in items))
+            doctor = ", ".join(doctor_names)
+            clinic = items[0].get("clinic", {}).get("name", "N/A")
             specialty = items[0].get("specialty", {}).get("name", "N/A")
             count = len(items)
             star_visual = "★" * stars + "☆" * (3 - stars) if stars else "N/A"
@@ -202,7 +204,8 @@ class Notifier:
                     f"Date: {date.strftime('%d.%m.%Y')} ({Notifier.relative_day_label(date)})\n"
                     f"Doctor: {doctor}\n"
                     f"Specialty: {specialty}\n"
-                    f"Appointments: {count}\n"
+                    f"Clinic: {clinic}\n"
+                    f"Appointments: {count} ({', '.join(sorted([datetime.datetime.fromisoformat(item.get('appointmentDate')).strftime('%H:%M') for item in items]))})\n"
                     f"Stars: {star_visual}\n"
                     + "-" * 25
             )
@@ -277,6 +280,7 @@ def main():
     find_appointment.add_argument("-l", "--language", required=False, type=int, help="4=Polski, 6=Angielski, 60=Ukraiński")
     find_appointment.add_argument("-i", "--interval", required=False, type=int, help="Repeat interval in minutes")
     find_appointment.add_argument("--stars", type=int,  required=False, help="Preferred doctor rating (1 to 3 stars)")
+    find_appointment.add_argument("--exclude-today", action="store_true", help="Skip displaying appointments that are only for today",)
 
     list_filters = subparsers.add_parser("list-filters", help="List filters")
     list_filters_subparsers = list_filters.add_subparsers(dest="filter_type", required=True, help="Type of filter to list")
@@ -325,7 +329,8 @@ def main():
             display_appointments(new_appointments)
     
             # Send notification if appointments are found
-            if new_appointments and not exclude_today_only(new_appointments):
+            if new_appointments and (
+                    not args.exclude_today or not exclude_today_only(new_appointments)):
                 Notifier.send_notification(new_appointments, args.notification, args.title, stars=args.stars)
 
             if args.interval:
