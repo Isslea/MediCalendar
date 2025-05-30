@@ -159,6 +159,22 @@ class AppointmentFinder:
         return response
 
 class Notifier:
+    def relative_day_label(date):
+        """Return a human-friendly label like 'today', 'tomorrow', 'in 2 days', etc."""
+        today = datetime.date.today()
+        delta = (date - today).days
+
+        if delta == 0:
+            return "today"
+        elif delta == 1:
+            return "tomorrow"
+        elif delta > 1:
+            return f"in {delta} days"
+        elif delta == -1:
+            return "yesterday"
+        else:
+            return f"{abs(delta)} days ago"
+    
     @staticmethod
     def format_appointments(appointments):
         """Format appointments into a human-readable string."""
@@ -182,7 +198,7 @@ class Notifier:
             count = len(items)
 
             message = (
-                    f"Date: {date}\n"
+                    f"Date: {date.strftime('%d.%m.%Y')} ({Notifier.relative_day_label(date)})\n"
                     f"Doctor: {doctor}\n"
                     f"Specialty: {specialty}\n"
                     f"Appointments: {count}\n"
@@ -231,6 +247,17 @@ def display_appointments(appointments):
             console.print(f"  Languages: {languages}")
             console.print("-" * 50)
 
+def exclude_today_only(appointments):
+    """Return True if all appointments are for today (i.e., nothing beyond today)."""
+    today = datetime.date.today()
+    for appt in appointments:
+        try:
+            date = datetime.datetime.fromisoformat(appt.get("appointmentDate", "")).date()
+            if date != today:
+                return False
+        except Exception:
+            continue
+    return True
 
 def main():
     parser = argparse.ArgumentParser(description="Find appointment slots.")
@@ -295,7 +322,7 @@ def main():
             display_appointments(new_appointments)
     
             # Send notification if appointments are found
-            if new_appointments:
+            if new_appointments and not exclude_today_only(new_appointments):
                 Notifier.send_notification(new_appointments, args.notification, args.title)
 
             if args.interval:
