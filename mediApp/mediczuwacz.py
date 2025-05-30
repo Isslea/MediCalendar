@@ -176,7 +176,7 @@ class Notifier:
             return f"{abs(delta)} days ago"
     
     @staticmethod
-    def format_appointments(appointments):
+    def format_appointments(appointments, stars=None):
         """Format appointments into a human-readable string."""
         if not appointments:
             return "No appointments found."
@@ -196,12 +196,14 @@ class Notifier:
             doctor = items[0].get("doctor", {}).get("name", "N/A")
             specialty = items[0].get("specialty", {}).get("name", "N/A")
             count = len(items)
+            star_visual = "★" * stars + "☆" * (3 - stars) if stars else "N/A"
 
             message = (
                     f"Date: {date.strftime('%d.%m.%Y')} ({Notifier.relative_day_label(date)})\n"
                     f"Doctor: {doctor}\n"
                     f"Specialty: {specialty}\n"
                     f"Appointments: {count}\n"
+                    f"Stars: {star_visual}\n"
                     + "-" * 25
             )
             messages.append(message)
@@ -209,10 +211,10 @@ class Notifier:
         return "\n".join(messages)
 
     @staticmethod
-    def send_notification(appointments, notifier, title):
+    def send_notification(appointments, notifier, title, stars):
         """Send a notification with formatted appointments."""
         notifier = notifier.strip()
-        message = Notifier.format_appointments(appointments)
+        message = Notifier.format_appointments(appointments, stars)
         if notifier == "pushbullet":
             pushbullet_notify(message, title)
         elif notifier == "pushover":
@@ -274,6 +276,7 @@ def main():
     find_appointment.add_argument("-t", "--title", required=False, help="Notification title")
     find_appointment.add_argument("-l", "--language", required=False, type=int, help="4=Polski, 6=Angielski, 60=Ukraiński")
     find_appointment.add_argument("-i", "--interval", required=False, type=int, help="Repeat interval in minutes")
+    find_appointment.add_argument("--stars", type=int,  required=False, help="Preferred doctor rating (1 to 3 stars)")
 
     list_filters = subparsers.add_parser("list-filters", help="List filters")
     list_filters_subparsers = list_filters.add_subparsers(dest="filter_type", required=True, help="Type of filter to list")
@@ -323,7 +326,7 @@ def main():
     
             # Send notification if appointments are found
             if new_appointments and not exclude_today_only(new_appointments):
-                Notifier.send_notification(new_appointments, args.notification, args.title)
+                Notifier.send_notification(new_appointments, args.notification, args.title, stars=args.stars)
 
             if args.interval:
                 # Sleep and repeat
