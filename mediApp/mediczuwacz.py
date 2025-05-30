@@ -9,6 +9,7 @@ import re
 import string
 import uuid
 import argparse
+from collections import defaultdict
 from urllib.parse import urlparse
 import datetime
 import requests
@@ -157,7 +158,6 @@ class AppointmentFinder:
         response = self.http_get(filters_url, params)
         return response
 
-
 class Notifier:
     @staticmethod
     def format_appointments(appointments):
@@ -165,18 +165,31 @@ class Notifier:
         if not appointments:
             return "No appointments found."
 
-        messages = []
+        grouped = defaultdict(list)
+
         for appointment in appointments:
-            date = appointment.get("appointmentDate", "N/A")
-            doctor = appointment.get("doctor", {}).get("name", "N/A")
-            specialty = appointment.get("specialty", {}).get("name", "N/A")
+            date_str = appointment.get("appointmentDate", "")
+            try:
+                dt = datetime.datetime.fromisoformat(date_str)
+            except Exception:
+                continue  # Skip invalid dates
+            grouped[dt.date()].append(appointment)
+
+        messages = []
+        for date, items in sorted(grouped.items()):
+            doctor = items[0].get("doctor", {}).get("name", "N/A")
+            specialty = items[0].get("specialty", {}).get("name", "N/A")
+            count = len(items)
 
             message = (
-                f"Date: {date}\n"
-                f"Doctor: {doctor}\n"
-                f"Specialty: {specialty}\n" + "-" * 25
+                    f"Date: {date}\n"
+                    f"Doctor: {doctor}\n"
+                    f"Specialty: {specialty}\n"
+                    f"Appointments: {count}\n"
+                    + "-" * 25
             )
             messages.append(message)
+
         return "\n".join(messages)
 
     @staticmethod
