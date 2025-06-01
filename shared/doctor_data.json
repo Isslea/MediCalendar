@@ -6,17 +6,17 @@
         },
         {
             "appointmentDate": "2025-06-30T14:30:00",
-            "reminderCount": 7
+            "reminderCount": 8
         },
         {
             "appointmentDate": "2025-06-30T14:45:00",
-            "reminderCount": 7
+            "reminderCount": 8
         }
     ],
     "465360": [
         {
             "appointmentDate": "2025-06-30T11:15:00",
-            "reminderCount": 7
+            "reminderCount": 8
         }
     ]
 }
