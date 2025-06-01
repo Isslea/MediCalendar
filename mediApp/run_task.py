@@ -1,5 +1,7 @@
 import csv
 import subprocess
+import os
+os.makedirs('./shared', exist_ok=True)
 
 with open('./mediApp/params.csv') as f:
     reader = csv.DictReader(f)
@@ -13,6 +15,7 @@ with open('./mediApp/params.csv') as f:
         cmd = [
             'docker', 'run', '--rm',
             '--env-file=./mediApp/.env',
+            '-v', os.path.abspath('./shared') + ':/app/shared',
             'mediczuwacz',
             'find-appointment',
             '-r 202',

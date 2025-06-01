@@ -25,12 +25,13 @@ jobs:
           
       - name: Build Docker image (mediczuwacz)
         run: docker build --rm -t mediczuwacz ./mediApp
-      
-      - name: Restore doctor data cache
-        uses: actions/cache@v4
+
+      - name: Download doctor data artifact (if exists)
+        continue-on-error: true
+        uses: actions/download-artifact@v4
         with:
-          path: ${{ env.DOCTOR_DATA_FILE }}
-          key: doctor-reminder-cache
+          name: doctor_data
+          path: ./shared
 
       - name: Run specialist
         run: python ./mediApp/run_task.py
@@ -44,13 +45,8 @@ jobs:
       # - name: Run sickness Podgórska
       #   run:  docker run --rm --env-file=./mediApp/.env mediczuwacz find-appointment -r 202 -s 16234 -n telegram -f "2025-05-30" -e "2025-05-30" -c 13038
 
-      - name: Save updated doctor data to cache
-        uses: actions/cache@v4
+      - name: Upload updated doctor data
+        uses: actions/upload-artifact@v4
         with:
-          path: ${{ env.DOCTOR_DATA_FILE }}
-          key: doctor-reminder-cache-${{ github.run_id }}
-          restore-keys: |
-            doctor-reminder-cache
-      
-      - name: Debug doctor data file
-        run: cat ${{ env.DOCTOR_DATA_FILE }} || echo "No file yet"
+          name: doctor_data
+          path: ./shared/doctor_data.json
