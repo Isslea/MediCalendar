@@ -1,0 +1,22 @@
+{
+    "227232": [
+        {
+            "appointmentDate": "2025-06-30T14:00:00",
+            "reminderCount": 1
+        },
+        {
+            "appointmentDate": "2025-06-30T14:30:00",
+            "reminderCount": 1
+        },
+        {
+            "appointmentDate": "2025-06-30T14:45:00",
+            "reminderCount": 1
+        }
+    ],
+    "465360": [
+        {
+            "appointmentDate": "2025-06-30T11:15:00",
+            "reminderCount": 1
+        }
+    ]
+}
