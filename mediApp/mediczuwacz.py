@@ -236,7 +236,7 @@ def display_appointments(appointments):
     if not appointments:
         console.print("No new appointments found.")
     else:
-        console.print("New sdggdsasdgfagwdsaappointments found:")
+        console.print("New appointments found:")
         console.print("-" * 50)
         for appointment in appointments:
             date = appointment.get("appointmentDate", "N/A")
@@ -327,8 +327,6 @@ def main():
 
             #Filter appointments
             for appt in appointments:
-                x = appt
-                print(x)
                 doctor_id = appt['doctor']['id']
                 app_date =  appt['appointmentDate']
 
@@ -360,8 +358,7 @@ def main():
             # Send notification if appointments are found
             if filtered_appointments and (
                     not args.exclude_today or not exclude_today_only(filtered_appointments)):
-                #Notifier.send_notification(new_appointments, args.notification, args.title, stars=args.stars)
-                print("Sent faked")
+                Notifier.send_notification(filtered_appointments, args.notification, args.title, stars=args.stars)
 
             if args.interval:
                 # Sleep and repeat
