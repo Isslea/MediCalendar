@@ -5,8 +5,8 @@ on:
     - cron: "*/15 * * * *" # every 15 minutes
   workflow_dispatch: # manual trigger
 
-env:
-  DOCTOR_DATA_FILE: doctor_data.json
+permissions:
+    contents: write
 
 jobs:
   run-app:
@@ -26,13 +26,6 @@ jobs:
       - name: Build Docker image (mediczuwacz)
         run: docker build --rm -t mediczuwacz ./mediApp
 
-      - name: Download doctor data artifact (if exists)
-        continue-on-error: true
-        uses: actions/download-artifact@v4
-        with:
-          name: doctor_data
-          path: ./shared
-
       - name: Run specialist
         run: python ./mediApp/run_task.py
       
@@ -44,9 +37,14 @@ jobs:
 
       # - name: Run sickness Podgórska
       #   run:  docker run --rm --env-file=./mediApp/.env mediczuwacz find-appointment -r 202 -s 16234 -n telegram -f "2025-05-30" -e "2025-05-30" -c 13038
-
-      - name: Upload updated doctor data
-        uses: actions/upload-artifact@v4
-        with:
-          name: doctor_data
-          path: ./shared/doctor_data.json
+      
+      - name: Commit and push updated doctor_data.json
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git pull origin main
+          git add shared/doctor_data.json
+          git commit -m "Update doctor data [bot]" || echo "Nothing to commit"
+          git push origin main
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
