@@ -1,7 +1,8 @@
 import csv
 import subprocess
 import os
-os.makedirs('./shared', exist_ok=True)
+file_path = 'shared/doctor_data.json'
+os.makedirs(os.path.dirname(file_path), exist_ok=True)
 
 with open('./mediApp/params.csv') as f:
     reader = csv.DictReader(f)
@@ -12,10 +13,11 @@ with open('./mediApp/params.csv') as f:
             continue
 
         print(f"Running row {i}: {row['name']}")
+        shared_path = os.path.abspath('./shared').replace('\\', '/')
         cmd = [
             'docker', 'run', '--rm',
             '--env-file=./mediApp/.env',
-            '-v', os.path.abspath('./shared') + ':/app/shared',
+            '-v', f'{shared_path}:/app/shared',
             'mediczuwacz',
             'find-appointment',
             '-r 202',
