@@ -305,6 +305,7 @@ def main():
         exit(1)
 
     filename_doctors = '/app/shared/doctor_data.json'
+    #filename_doctors = 'doctor_data.json'
 
     while True:
         # Authenticate
@@ -354,7 +355,9 @@ def main():
     
             # Display appointments
             display_appointments(filtered_appointments)
-    
+            console.print(f"All appointments: {len(appointments)}")
+            console.print(f"Filtered appointments: {len(filtered_appointments)}")
+
             # Send notification if appointments are found
             if filtered_appointments and (
                     not args.exclude_today or not exclude_today_only(filtered_appointments)):
