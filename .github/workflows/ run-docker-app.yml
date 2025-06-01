@@ -5,6 +5,9 @@ on:
     - cron: "*/15 * * * *" # every 15 minutes
   workflow_dispatch: # manual trigger
 
+env:
+  DOCTOR_DATA_FILE: doctor_data.json
+
 jobs:
   run-app:
     runs-on: ubuntu-latest
@@ -22,6 +25,12 @@ jobs:
           
       - name: Build Docker image (mediczuwacz)
         run: docker build --rm -t mediczuwacz ./mediApp
+      
+      - name: Restore doctor data cache
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.DOCTOR_DATA_FILE }}
+          key: doctor-reminder-cache
 
       - name: Run specialist
         run: python ./mediApp/run_task.py
@@ -34,3 +43,14 @@ jobs:
 
       # - name: Run sickness Podgórska
       #   run:  docker run --rm --env-file=./mediApp/.env mediczuwacz find-appointment -r 202 -s 16234 -n telegram -f "2025-05-30" -e "2025-05-30" -c 13038
+
+      - name: Save updated doctor data to cache
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.DOCTOR_DATA_FILE }}
+          key: doctor-reminder-cache-${{ github.run_id }}
+          restore-keys: |
+            doctor-reminder-cache
+      
+      - name: Debug doctor data file
+        run: cat ${{ env.DOCTOR_DATA_FILE }} || echo "No file yet"

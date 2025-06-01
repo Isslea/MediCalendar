@@ -236,7 +236,7 @@ def display_appointments(appointments):
     if not appointments:
         console.print("No new appointments found.")
     else:
-        console.print("New appointments found:")
+        console.print("New sdggdsasdgfagwdsaappointments found:")
         console.print("-" * 50)
         for appointment in appointments:
             date = appointment.get("appointmentDate", "N/A")
@@ -304,7 +304,7 @@ def main():
         console.print("[bold red]Error:[/bold red] MEDICOVER_USER and MEDICOVER_PASS environment variables must be set.")
         exit(1)
 
-    previous_appointments = []
+    filename_doctors = 'doctor_data.json'
 
     while True:
         # Authenticate
@@ -316,22 +316,52 @@ def main():
         if args.command == "find-appointment":
             # Find appointments
             appointments = finder.find_appointments(args.region, args.specialty, args.clinic, args.date, args.enddate, args.language, args.doctor)
+            filtered_appointments = []
 
-            # Find new appointments
-            if previous_appointments:
-                new_appointments = [x for x in appointments if x not in previous_appointments]
+            #Read file with reminders of appointments
+            if os.path.exists(filename_doctors) and os.path.getsize(filename_doctors) > 0:
+                with open(filename_doctors, "r") as f:
+                    doctors_from_file = json.load(f)
             else:
-                new_appointments = appointments
+                doctors_from_file = {}
 
-            previous_appointments = appointments
+            #Filter appointments
+            for appt in appointments:
+                x = appt
+                print(x)
+                doctor_id = appt['doctor']['id']
+                app_date =  appt['appointmentDate']
+
+                if doctor_id not in doctors_from_file:
+                    doctors_from_file[doctor_id] = []
+
+                # Look for matching appointment date
+                for existing_appt in doctors_from_file[doctor_id]:
+                    if existing_appt["appointmentDate"] == app_date:
+                        existing_appt["reminderCount"] += 1
+                        if existing_appt["reminderCount"] <= 3:
+                            filtered_appointments.append(appt)
+                        break
+                else:
+                    # No existing appointment found, add new one
+                    doctors_from_file[doctor_id].append({
+                        "appointmentDate": app_date,
+                        "reminderCount": 1
+                    })
+                    filtered_appointments.append(appt)
+
+            #Save file with reminders of appointments
+            with open(filename_doctors, "w") as f:
+                json.dump(doctors_from_file, f, indent=4)
     
             # Display appointments
-            display_appointments(new_appointments)
+            display_appointments(filtered_appointments)
     
             # Send notification if appointments are found
-            if new_appointments and (
-                    not args.exclude_today or not exclude_today_only(new_appointments)):
-                Notifier.send_notification(new_appointments, args.notification, args.title, stars=args.stars)
+            if filtered_appointments and (
+                    not args.exclude_today or not exclude_today_only(filtered_appointments)):
+                #Notifier.send_notification(new_appointments, args.notification, args.title, stars=args.stars)
+                print("Sent faked")
 
             if args.interval:
                 # Sleep and repeat
