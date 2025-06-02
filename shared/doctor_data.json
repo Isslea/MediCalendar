@@ -36,14 +36,18 @@
         },
         {
             "appointmentDate": "2025-06-02T10:40:00",
-            "reminderCount": 1
+            "reminderCount": 2
         },
         {
             "appointmentDate": "2025-06-06T15:35:00",
-            "reminderCount": 1
+            "reminderCount": 2
         },
         {
             "appointmentDate": "2025-06-06T16:05:00",
+            "reminderCount": 1
+        },
+        {
+            "appointmentDate": "2025-06-02T14:20:00",
             "reminderCount": 1
         }
     ]
