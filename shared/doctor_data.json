@@ -30,11 +30,11 @@
         },
         {
             "appointmentDate": "2025-07-02T15:00:00",
-            "reminderCount": 15
+            "reminderCount": 16
         },
         {
             "appointmentDate": "2025-07-02T15:15:00",
-            "reminderCount": 15
+            "reminderCount": 16
         },
         {
             "appointmentDate": "2025-07-02T15:30:00",
