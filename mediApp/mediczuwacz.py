@@ -118,7 +118,7 @@ class AppointmentFinder:
             )
             return {}
 
-    def find_appointments(self, region, specialty, clinic, start_date, end_date, language, doctor=None):
+    def find_appointments(self, region, specialty, clinic, start_date, end_date, language, search_type, doctor=None):
         appointment_url = "https://api-gateway-online24.medicover.pl/appointments/api/search-appointments/slots"
         params = {
             "RegionIds": region,
@@ -127,7 +127,7 @@ class AppointmentFinder:
             "Page": 1,
             "PageSize": 5000,
             "StartTime": start_date.isoformat(),
-            "SlotSearchType": 0,
+            "SlotSearchType": search_type,
             "VisitType": "Center",
         }
 
@@ -304,8 +304,8 @@ def main():
         console.print("[bold red]Error:[/bold red] MEDICOVER_USER and MEDICOVER_PASS environment variables must be set.")
         exit(1)
 
-    filename_doctors = '/app/shared/doctor_data.json'
-    #filename_doctors = 'doctor_data.json'
+    #filename_doctors = '/app/shared/doctor_data.json'
+    filename_doctors = 'doctor_data.json'
 
     while True:
         # Authenticate
@@ -316,7 +316,11 @@ def main():
     
         if args.command == "find-appointment":
             # Find appointments
-            appointments = finder.find_appointments(args.region, args.specialty, args.clinic, args.date, args.enddate, args.language, args.doctor)
+            if args.specialty == [519]:
+                search_type = "DiagnosticProcedure"
+            else:
+                search_type = 0
+            appointments = finder.find_appointments(args.region, args.specialty, args.clinic, args.date, args.enddate, args.language, search_type, args.doctor)
             filtered_appointments = []
 
             #Read file with reminders of appointments
