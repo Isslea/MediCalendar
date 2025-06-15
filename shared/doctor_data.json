@@ -162,15 +162,15 @@
         },
         {
             "appointmentDate": "2025-07-15T16:00:00",
-            "reminderCount": 1
+            "reminderCount": 2
         },
         {
             "appointmentDate": "2025-07-15T17:15:00",
-            "reminderCount": 1
+            "reminderCount": 2
         },
         {
             "appointmentDate": "2025-07-15T17:30:00",
-            "reminderCount": 1
+            "reminderCount": 2
         }
     ],
     "103772": [
