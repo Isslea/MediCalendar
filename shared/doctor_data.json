@@ -158,13 +158,13 @@
         },
         {
             "appointmentDate": "2025-07-14T11:45:00",
-            "reminderCount": 12
+            "reminderCount": 13
         }
     ],
     "103772": [
         {
             "appointmentDate": "2025-06-16T08:30:00",
-            "reminderCount": 1
+            "reminderCount": 2
         }
     ]
 }
