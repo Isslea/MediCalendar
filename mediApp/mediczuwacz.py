@@ -304,8 +304,8 @@ def main():
         console.print("[bold red]Error:[/bold red] MEDICOVER_USER and MEDICOVER_PASS environment variables must be set.")
         exit(1)
 
-    #filename_doctors = '/app/shared/doctor_data.json'
-    filename_doctors = 'doctor_data.json'
+    filename_doctors = '/app/shared/doctor_data.json'
+    #filename_doctors = 'doctor_data.json'
 
     while True:
         # Authenticate
