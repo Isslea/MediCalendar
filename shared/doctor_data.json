@@ -278,19 +278,19 @@
     "103910": [
         {
             "appointmentDate": "2025-07-04T09:15:00",
-            "reminderCount": 5
-        },
-        {
-            "appointmentDate": "2025-07-04T09:30:00",
             "reminderCount": 6
         },
         {
+            "appointmentDate": "2025-07-04T09:30:00",
+            "reminderCount": 7
+        },
+        {
             "appointmentDate": "2025-07-04T09:45:00",
-            "reminderCount": 5
+            "reminderCount": 6
         },
         {
             "appointmentDate": "2025-07-04T10:15:00",
-            "reminderCount": 7
+            "reminderCount": 8
         },
         {
             "appointmentDate": "2025-07-04T10:30:00",
@@ -298,11 +298,11 @@
         },
         {
             "appointmentDate": "2025-07-04T10:45:00",
-            "reminderCount": 7
+            "reminderCount": 8
         },
         {
             "appointmentDate": "2025-07-04T11:15:00",
-            "reminderCount": 7
+            "reminderCount": 8
         },
         {
             "appointmentDate": "2025-07-04T13:15:00",
@@ -318,7 +318,7 @@
         },
         {
             "appointmentDate": "2025-07-04T13:00:00",
-            "reminderCount": 1
+            "reminderCount": 2
         }
     ]
 }
