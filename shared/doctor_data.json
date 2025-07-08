@@ -347,6 +347,10 @@
         {
             "appointmentDate": "2025-07-09T10:45:00",
             "reminderCount": 2
+        },
+        {
+            "appointmentDate": "2025-07-08T15:45:00",
+            "reminderCount": 1
         }
     ],
     "103772": [
@@ -432,7 +436,7 @@
         },
         {
             "appointmentDate": "2025-08-18T09:30:00",
-            "reminderCount": 16
+            "reminderCount": 17
         },
         {
             "appointmentDate": "2025-08-18T09:45:00",
