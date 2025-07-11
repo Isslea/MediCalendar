@@ -667,6 +667,10 @@
         {
             "appointmentDate": "2025-07-11T12:30:00",
             "reminderCount": 1
+        },
+        {
+            "appointmentDate": "2025-07-11T11:45:00",
+            "reminderCount": 1
         }
     ]
 }
