@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 
 import base64
+import csv
 import hashlib
 import json
 import os
@@ -21,7 +22,7 @@ from rich import print_json, print
 from rich.console import Console
 import time
 
-from medihunter_notifiers import pushbullet_notify, pushover_notify, telegram_notify, xmpp_notify, gotify_notify
+from medihunter_notifiers import pushbullet_notify, pushover_notify, telegram_notify, gotify_notify
 
 console = Console()
 
@@ -224,8 +225,6 @@ class Notifier:
             pushover_notify(message, title)
         elif notifier == "telegram":
             telegram_notify(message, title)
-        elif notifier == "xmpp":
-            xmpp_notify(message)
         elif notifier == "gotify":
             gotify_notify(message, title)
 
@@ -269,8 +268,8 @@ def main():
     subparsers = parser.add_subparsers(dest="command", required=True, help="Command to execute")
 
     find_appointment = subparsers.add_parser("find-appointment", help="Find appointment")
-    find_appointment.add_argument("-r", "--region", required=True, type=int, help="Region ID")
-    find_appointment.add_argument("-s", "--specialty", required=True, type=int, action="extend", nargs="+", help="Specialty ID",)
+    find_appointment.add_argument("-r", "--region", required=False, type=int, help="Region ID")
+    find_appointment.add_argument("-s", "--specialty", required=False, type=int, action="extend", nargs="+", help="Specialty ID",)
     find_appointment.add_argument("-c", "--clinic", required=False, type=int, help="Clinic ID")
     find_appointment.add_argument("-d", "--doctor", required=False, type=int, help="Doctor ID")
     find_appointment.add_argument("-f", "--date", type=datetime.date.fromisoformat, default=datetime.date.today(), help="Start date in YYYY-MM-DD format")
@@ -304,72 +303,92 @@ def main():
         console.print("[bold red]Error:[/bold red] MEDICOVER_USER and MEDICOVER_PASS environment variables must be set.")
         exit(1)
 
-    filename_doctors = '/app/shared/doctor_data.json'
+    docker_path = '/app/shared'
+    filename_doctors = f'{docker_path}/doctor_data.json'
+    params_file = f'{docker_path}/params.csv'
     #filename_doctors = 'doctor_data.json'
-
+    #params_file = 'params.csv'
+    count_times = 0
     while True:
         # Authenticate
         auth = Authenticator(username, password)
         auth.login()
     
         finder = AppointmentFinder(auth.session, auth.headers)
-    
+
         if args.command == "find-appointment":
-            # Find appointments
-            if args.specialty == [519]:
-                search_type = "DiagnosticProcedure"
+            if os.path.exists(params_file) and os.path.getsize(params_file) > 0:
+                with open(params_file, "r", newline="") as f:
+                    reader = csv.DictReader(f)
+                    params_from_file = list(reader)
             else:
-                search_type = 0
-            appointments = finder.find_appointments(args.region, args.specialty, args.clinic, args.date, args.enddate, args.language, search_type, args.doctor)
-            filtered_appointments = []
+                params_from_file = []
 
-            #Read file with reminders of appointments
-            if os.path.exists(filename_doctors) and os.path.getsize(filename_doctors) > 0:
-                with open(filename_doctors, "r") as f:
-                    doctors_from_file = json.load(f)
-            else:
-                doctors_from_file = {}
+            for param in params_from_file:
+                if param['run'] == "no":
+                    continue
 
-            #Filter appointments
-            for appt in appointments:
-                doctor_id = appt['doctor']['id']
-                app_date =  appt['appointmentDate']
+                args.region = 202
+                args.specialty = int(param['service_id'])
+                args.doctor = int(param['doctor_id'])
+                args.star = int(param['stars'])
+                args.notification = 'telegram'
 
-                if doctor_id not in doctors_from_file:
-                    doctors_from_file[doctor_id] = []
-
-                # Look for matching appointment date
-                for existing_appt in doctors_from_file[doctor_id]:
-                    if existing_appt["appointmentDate"] == app_date:
-                        existing_appt["reminderCount"] += 1
-                        if existing_appt["reminderCount"] <= 3:
-                            filtered_appointments.append(appt)
-                        break
+                # Find appointments
+                if args.specialty == [519]:
+                    search_type = "DiagnosticProcedure"
                 else:
-                    # No existing appointment found, add new one
-                    doctors_from_file[doctor_id].append({
-                        "appointmentDate": app_date,
-                        "reminderCount": 1
-                    })
-                    filtered_appointments.append(appt)
+                    search_type = 0
+                appointments = finder.find_appointments(args.region, args.specialty, args.clinic, args.date, args.enddate, args.language, search_type, args.doctor)
+                filtered_appointments = []
 
-            #Save file with reminders of appointments
-            with open(filename_doctors, "w") as f:
-                json.dump(doctors_from_file, f, indent=4)
-    
-            # Display appointments
-            display_appointments(filtered_appointments)
-            console.print(f"All appointments: {len(appointments)}")
-            console.print(f"Filtered appointments: {len(filtered_appointments)}")
+                #Read file with reminders of appointments
+                if os.path.exists(filename_doctors) and os.path.getsize(filename_doctors) > 0:
+                    with open(filename_doctors, "r") as f:
+                        doctors_from_file = json.load(f)
+                else:
+                    doctors_from_file = {}
 
-            # Send notification if appointments are found
-            if filtered_appointments and (
-                    not args.exclude_today or not exclude_today_only(filtered_appointments)):
-                Notifier.send_notification(filtered_appointments, args.notification, args.title, stars=args.stars)
+                #Filter appointments
+                for appt in appointments:
+                    doctor_id = appt['doctor']['id']
+                    app_date =  appt['appointmentDate']
 
-            if args.interval:
-                # Sleep and repeat
-                time.sleep(args.interval * 60)
+                    if doctor_id not in doctors_from_file:
+                        doctors_from_file[doctor_id] = []
+
+                    # Look for matching appointment date
+                    for existing_appt in doctors_from_file[doctor_id]:
+                        if existing_appt["appointmentDate"] == app_date:
+                            existing_appt["reminderCount"] += 1
+                            if existing_appt["reminderCount"] <= 3:
+                                filtered_appointments.append(appt)
+                            break
+                    else:
+                        # No existing appointment found, add new one
+                        doctors_from_file[doctor_id].append({
+                            "appointmentDate": app_date,
+                            "reminderCount": 1
+                        })
+                        filtered_appointments.append(appt)
+
+                #Save file with reminders of appointments
+                with open(filename_doctors, "w") as f:
+                    json.dump(doctors_from_file, f, indent=4)
+
+                # Display appointments
+                display_appointments(filtered_appointments)
+                console.print(f"All appointments: {len(appointments)}")
+                console.print(f"Filtered appointments: {len(filtered_appointments)}")
+
+                # Send notification if appointments are found
+                if filtered_appointments and (
+                        not args.exclude_today or not exclude_today_only(filtered_appointments)):
+                    Notifier.send_notification(filtered_appointments, args.notification, args.title, stars=args.stars)
+
+            if count_times <= 3:
+                time.sleep(60)
+                count_times += 1
                 continue
     
         elif args.command == "list-filters":

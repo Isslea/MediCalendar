@@ -1,7 +1,6 @@
 from notifiers import get_notifier
 from notifiers.exceptions import BadArguments
 from os import environ
-from xmpp import *
 import requests
 
 pushbullet = get_notifier('pushbullet')
@@ -51,24 +50,6 @@ def telegram_notify(message, title: str = None):
         print(f'Telegram notification failed\n{r.errors}')
     else:
         print("Telegram notification sent successfully")
-
-def xmpp_notify(message):
-    try:
-        jid = environ['NOTIFIERS_XMPP_JID']
-        password = environ['NOTIFIERS_XMPP_PASSWORD']
-        receiver = environ['NOTIFIERS_XMPP_RECEIVER']
-
-        r = xmpp.protocol.JID(jid)
-        conn = xmpp.Client(server = r.getDomain(), debug = False)
-        if (
-            (not conn.connect()) or
-            (not conn.auth(user = r.getNode(), password = password, resource = r.getResource())) or
-            (not conn.send(xmpp.protocol.Message(to = receiver, body = message)))
-           ):
-            print(f'XMPP notification failed')
-    except KeyError as e:
-        print(f'XMPP notifications require NOTIFIERS_XMPP_JID, NOTIFIERS_XMPP_PASSWORD'
-              f' and NOTIFIERS_XMPP_RECEIVER to be exported. Detailed exception:\n{e}')
 
 def gotify_notify(message, title: str = None):
     try:
