@@ -325,6 +325,7 @@ def main():
                     reader = csv.DictReader(f)
                     params_from_file = list(reader)
             else:
+                print("Params file not found")
                 params_from_file = []
 
             for param in params_from_file:

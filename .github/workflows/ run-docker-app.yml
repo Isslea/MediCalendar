@@ -25,15 +25,18 @@ jobs:
           
       - name: Build Docker image (mediczuwacz)
         run: docker build --rm -t mediczuwacz ./mediApp
-      
-      - name: Run specialist
-        run:  docker run --rm --env-file=./mediApp/.env mediczuwacz find-appointment
-        
-      # - name: Run sickness Fabryczna
-      #   run:  docker run --rm --env-file=./mediApp/.env mediczuwacz find-appointment -r 202 -s 16234 -n telegram -f "2025-05-30" -e "2025-05-30" -c 102436
 
-      # - name: Run sickness Podgórska
-      #   run:  docker run --rm --env-file=./mediApp/.env mediczuwacz find-appointment -r 202 -s 16234 -n telegram -f "2025-05-30" -e "2025-05-30" -c 13038
+      - name: Run specialist
+        run: python ./mediApp/run_task.py
+
+      #- name: Run sickness Czerwone Maki
+        #run:  docker run --rm --env-file=./mediApp/.env mediczuwacz find-appointment -r 202 -s 16234 -n telegram -f "2025-07-08" -e "2025-07-08" -c 91164
+        
+      #- name: Run sickness Fabryczna
+        #run:  docker run --rm --env-file=./mediApp/.env mediczuwacz find-appointment -r 202 -s 16234 -n telegram -f "2025-07-08" -e "2025-07-08" -c 102436
+
+      #- name: Run sickness Podgórska
+        #run:  docker run --rm --env-file=./mediApp/.env mediczuwacz find-appointment -r 202 -s 16234 -n telegram -f "2025-07-08" -e "2025-07-08" -c 13038
       
       - name: Commit and push updated doctor_data.json
         run: |
