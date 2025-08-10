@@ -306,7 +306,7 @@ def main():
     print("jestem init")
     docker_path = '/app/shared'
     filename_doctors = f'{docker_path}/doctor_data.json'
-    params_file = f'{docker_path}/params.csv'
+    params_file = '/app/params.csv'
     #filename_doctors = 'doctor_data.json'
     #params_file = 'params.csv'
     count_times = 0

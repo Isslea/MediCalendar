@@ -22,12 +22,9 @@ jobs:
           echo "MEDICOVER_PASS=${{ secrets.MEDICOVER_PASS }}" >> ./mediApp/.env
           echo "NOTIFIERS_TELEGRAM_CHAT_ID=${{ secrets.TELEGRAM_ID }}" >> ./mediApp/.env
           echo "NOTIFIERS_TELEGRAM_TOKEN=${{ secrets.TELEGRAM_TOKEN }}" >> ./mediApp/.env
-          
+
       - name: Build Docker image (mediczuwacz)
         run: docker build --rm -t mediczuwacz ./mediApp
-
-      - name: Copy params.csv to shared before Docker run
-        run: cp ./mediApp/params.csv ./shared/params.csv
 
       - name: Run specialist
         run: python ./mediApp/run_task.py
