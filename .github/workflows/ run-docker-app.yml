@@ -26,6 +26,9 @@ jobs:
       - name: Build Docker image (mediczuwacz)
         run: docker build --rm -t mediczuwacz ./mediApp
 
+      - name: Copy params.csv to shared before Docker run
+        run: cp ./mediApp/params.csv ./shared/params.csv
+
       - name: Run specialist
         run: python ./mediApp/run_task.py
 
