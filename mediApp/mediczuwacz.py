@@ -392,7 +392,7 @@ def main():
                     Notifier.send_notification(filtered_appointments, args.notification, args.title, stars=args.stars)
 
             if count_times <= 3:
-                time.sleep(60)
+                time.sleep(15*60)
                 count_times += 1
                 continue
     
