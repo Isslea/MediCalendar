@@ -1,12 +1,15 @@
 import csv
 import subprocess
 import os
-file_path = 'shared/doctor_data.json'
+
+base_dir = os.path.dirname(os.path.abspath(__file__))
+file_path = os.path.join(base_dir, '../shared/doctor_data.json')
 os.makedirs(os.path.dirname(file_path), exist_ok=True)
 
-with open('./mediApp/params.csv') as f:
+params_path = os.path.join(base_dir, 'params.csv')
+with open(params_path) as f:
     reader = csv.DictReader(f)
-    shared_path = os.path.abspath('./shared').replace('\\', '/')
+    shared_path = os.path.abspath(os.path.join(base_dir, '../shared')).replace('\\', '/')
     cmd = [
         'docker', 'run', '--rm',
         '--env-file=./mediApp/.env',
