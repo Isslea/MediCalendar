@@ -303,6 +303,7 @@ def main():
         console.print("[bold red]Error:[/bold red] MEDICOVER_USER and MEDICOVER_PASS environment variables must be set.")
         exit(1)
 
+    print("jestem init")
     docker_path = '/app/shared'
     filename_doctors = f'{docker_path}/doctor_data.json'
     params_file = f'{docker_path}/params.csv'
@@ -310,6 +311,7 @@ def main():
     #params_file = 'params.csv'
     count_times = 0
     while True:
+        print("jestem while")
         # Authenticate
         auth = Authenticator(username, password)
         auth.login()
@@ -317,6 +319,7 @@ def main():
         finder = AppointmentFinder(auth.session, auth.headers)
 
         if args.command == "find-appointment":
+            print("jestem find-appointment")
             if os.path.exists(params_file) and os.path.getsize(params_file) > 0:
                 with open(params_file, "r", newline="") as f:
                     reader = csv.DictReader(f)
@@ -325,6 +328,7 @@ def main():
                 params_from_file = []
 
             for param in params_from_file:
+                print("jestem for")
                 if param['run'] == "no":
                     continue
 
