@@ -1216,31 +1216,31 @@
     "499580": [
         {
             "appointmentDate": "2025-08-26T10:00:00",
-            "reminderCount": 5
+            "reminderCount": 6
         },
         {
             "appointmentDate": "2025-08-26T10:15:00",
-            "reminderCount": 5
+            "reminderCount": 6
         },
         {
             "appointmentDate": "2025-08-26T10:30:00",
-            "reminderCount": 5
+            "reminderCount": 6
         },
         {
             "appointmentDate": "2025-08-26T14:30:00",
-            "reminderCount": 5
+            "reminderCount": 6
         },
         {
             "appointmentDate": "2025-08-27T14:15:00",
-            "reminderCount": 5
+            "reminderCount": 6
         },
         {
             "appointmentDate": "2025-08-27T15:15:00",
-            "reminderCount": 5
+            "reminderCount": 6
         },
         {
             "appointmentDate": "2025-08-27T15:30:00",
-            "reminderCount": 5
+            "reminderCount": 6
         }
     ]
 }
