@@ -305,10 +305,10 @@ def main():
 
     print("jestem init")
     docker_path = '/app/shared'
-    #filename_doctors = f'{docker_path}/doctor_data.json'
-    #params_file = '/app/params.csv'
-    filename_doctors = 'doctor_data.json'
-    params_file = 'params.csv'
+    filename_doctors = f'{docker_path}/doctor_data.json'
+    params_file = '/app/params.csv'
+    #filename_doctors = 'doctor_data.json'
+    #params_file = 'params.csv'
 
     while True:
         print("jestem while")
