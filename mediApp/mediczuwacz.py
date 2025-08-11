@@ -305,11 +305,11 @@ def main():
 
     print("jestem init")
     docker_path = '/app/shared'
-    filename_doctors = f'{docker_path}/doctor_data.json'
-    params_file = '/app/params.csv'
-    #filename_doctors = 'doctor_data.json'
-    #params_file = 'params.csv'
-    count_times = 0
+    #filename_doctors = f'{docker_path}/doctor_data.json'
+    #params_file = '/app/params.csv'
+    filename_doctors = 'doctor_data.json'
+    params_file = 'params.csv'
+
     while True:
         print("jestem while")
         # Authenticate
@@ -390,7 +390,7 @@ def main():
                 if filtered_appointments and (
                         not args.exclude_today or not exclude_today_only(filtered_appointments)):
                     Notifier.send_notification(filtered_appointments, args.notification, args.title, stars=args.stars)
-    
+                time.sleep(5)
         elif args.command == "list-filters":
     
             if args.filter_type in ("doctors", "clinics"):
