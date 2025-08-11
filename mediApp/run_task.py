@@ -1,8 +1,8 @@
 import subprocess
 import os
-file_path = 'shared/doctor_data.json'
-os.makedirs(os.path.dirname(file_path), exist_ok=True)
-shared_path = os.path.abspath('./shared').replace('\\', '/')
+
+base_dir = os.path.dirname(os.path.abspath(__file__))
+shared_path = os.path.abspath(os.path.join(base_dir, '../shared')).replace('\\', '/')
 cmd = [
     'docker', 'run', '--rm',
     '--env-file=./mediApp/.env',
