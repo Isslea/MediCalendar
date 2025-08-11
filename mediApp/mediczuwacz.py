@@ -390,11 +390,6 @@ def main():
                 if filtered_appointments and (
                         not args.exclude_today or not exclude_today_only(filtered_appointments)):
                     Notifier.send_notification(filtered_appointments, args.notification, args.title, stars=args.stars)
-
-            if count_times <= 3:
-                time.sleep(15*60)
-                count_times += 1
-                continue
     
         elif args.command == "list-filters":
     

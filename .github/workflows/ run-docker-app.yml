@@ -2,7 +2,7 @@ name: Finy my doctors
 
 on:
   schedule:
-    - cron: '0 4-22 * * *'
+    - cron: '0,15,30,45 4-22 * * *'
   workflow_dispatch: # manual trigger
 
 permissions:
