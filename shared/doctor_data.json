@@ -896,31 +896,31 @@
         },
         {
             "appointmentDate": "2025-09-22T08:15:00",
-            "reminderCount": 25
+            "reminderCount": 26
         },
         {
             "appointmentDate": "2025-09-22T09:45:00",
-            "reminderCount": 25
+            "reminderCount": 26
         },
         {
             "appointmentDate": "2025-09-22T10:00:00",
-            "reminderCount": 25
+            "reminderCount": 26
         },
         {
             "appointmentDate": "2025-09-22T10:45:00",
-            "reminderCount": 25
+            "reminderCount": 26
         },
         {
             "appointmentDate": "2025-09-22T11:45:00",
-            "reminderCount": 25
+            "reminderCount": 26
         },
         {
             "appointmentDate": "2025-09-22T12:00:00",
-            "reminderCount": 25
+            "reminderCount": 26
         },
         {
             "appointmentDate": "2025-09-22T13:45:00",
-            "reminderCount": 25
+            "reminderCount": 26
         }
     ],
     "103910": [
@@ -1286,27 +1286,27 @@
         },
         {
             "appointmentDate": "2025-09-23T15:15:00",
-            "reminderCount": 1
+            "reminderCount": 2
         },
         {
             "appointmentDate": "2025-09-23T15:30:00",
-            "reminderCount": 1
+            "reminderCount": 2
         },
         {
             "appointmentDate": "2025-09-23T16:30:00",
-            "reminderCount": 1
+            "reminderCount": 2
         },
         {
             "appointmentDate": "2025-09-23T16:45:00",
-            "reminderCount": 1
+            "reminderCount": 2
         },
         {
             "appointmentDate": "2025-09-23T17:30:00",
-            "reminderCount": 1
+            "reminderCount": 2
         },
         {
             "appointmentDate": "2025-09-23T17:45:00",
-            "reminderCount": 1
+            "reminderCount": 2
         }
     ]
 }
