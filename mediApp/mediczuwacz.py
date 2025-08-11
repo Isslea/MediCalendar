@@ -340,7 +340,7 @@ def main():
                 args.notification = 'telegram'
 
                 # Find appointments
-                if args.specialty == [519]:
+                if args.specialty == [519] or args.specialty == 519:
                     search_type = "DiagnosticProcedure"
                 else:
                     search_type = 0
