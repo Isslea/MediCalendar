@@ -1782,71 +1782,71 @@
     "Klaudia_103772": [
         {
             "appointmentDate": "2025-10-06T11:30:00",
-            "reminderCount": 4
+            "reminderCount": 5
         },
         {
             "appointmentDate": "2025-10-13T08:00:00",
-            "reminderCount": 4
+            "reminderCount": 5
         },
         {
             "appointmentDate": "2025-10-13T08:15:00",
-            "reminderCount": 4
+            "reminderCount": 5
         },
         {
             "appointmentDate": "2025-10-13T09:45:00",
-            "reminderCount": 4
+            "reminderCount": 5
         },
         {
             "appointmentDate": "2025-10-13T10:00:00",
-            "reminderCount": 4
+            "reminderCount": 5
         },
         {
             "appointmentDate": "2025-10-13T10:45:00",
-            "reminderCount": 4
+            "reminderCount": 5
         },
         {
             "appointmentDate": "2025-10-13T11:45:00",
-            "reminderCount": 4
+            "reminderCount": 5
         },
         {
             "appointmentDate": "2025-10-13T12:00:00",
-            "reminderCount": 4
+            "reminderCount": 5
         }
     ],
     "Klaudia_103934": [
         {
             "appointmentDate": "2025-09-16T09:15:00",
-            "reminderCount": 1
+            "reminderCount": 2
         },
         {
             "appointmentDate": "2025-09-16T11:00:00",
-            "reminderCount": 1
+            "reminderCount": 2
         },
         {
             "appointmentDate": "2025-09-16T11:30:00",
-            "reminderCount": 1
+            "reminderCount": 2
         },
         {
             "appointmentDate": "2025-09-16T13:15:00",
-            "reminderCount": 1
+            "reminderCount": 2
         }
     ],
     "Ksenia_103934": [
         {
             "appointmentDate": "2025-09-16T09:15:00",
-            "reminderCount": 1
+            "reminderCount": 2
         },
         {
             "appointmentDate": "2025-09-16T11:00:00",
-            "reminderCount": 1
+            "reminderCount": 2
         },
         {
             "appointmentDate": "2025-09-16T11:30:00",
-            "reminderCount": 1
+            "reminderCount": 2
         },
         {
             "appointmentDate": "2025-09-16T13:15:00",
-            "reminderCount": 1
+            "reminderCount": 2
         }
     ]
 }
