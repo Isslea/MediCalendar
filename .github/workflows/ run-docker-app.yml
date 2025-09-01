@@ -20,8 +20,8 @@ jobs:
         run: |
           echo "MEDICOVER_USER=${{ secrets.MEDICOVER_USER }}" > ./mediApp/.env
           echo "MEDICOVER_PASS=${{ secrets.MEDICOVER_PASS }}" >> ./mediApp/.env
-          echo "NOTIFIERS_TELEGRAM_CHAT_ID=${{ secrets.TELEGRAM_ID }}" >> ./mediApp/.env
-          echo "NOTIFIERS_TELEGRAM_TOKEN=${{ secrets.TELEGRAM_TOKEN }}" >> ./mediApp/.env
+          echo "NOTIFIERS_TELEGRAM_CHAT_ID=${{ secrets.NOTIFIERS_TELEGRAM_CHAT_ID }}" >> ./mediApp/.env
+          echo "NOTIFIERS_TELEGRAM_TOKEN=${{ secrets.NOTIFIERS_TELEGRAM_TOKEN }}" >> ./mediApp/.env
           echo "MEDICOVER_USER_KSENIA=${{ secrets.MEDICOVER_USER_KSENIA }}" > ./mediApp/.env
           echo "MEDICOVER_PASS_KSENIA=${{ secrets.MEDICOVER_PASS_KSENIA }}" >> ./mediApp/.env
           echo "NOTIFIERS_TELEGRAM_CHAT_ID_KSENIA=${{ secrets.NOTIFIERS_TELEGRAM_CHAT_ID_KSENIA }}" >> ./mediApp/.env
