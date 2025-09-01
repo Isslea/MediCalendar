@@ -36,6 +36,7 @@ def pushover_notify(message, title: str = None):
 
 def telegram_notify(message, title: str = None, chat_id: str = None, token: str = None):
     try:
+        print(chat_id, token)
         if title:
             message = f"<b>{title}</b>\n{message}"
 
