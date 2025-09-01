@@ -23,5 +23,6 @@ RUN pip install --no-cache-dir "setuptools<58.0.0" rpds-py future rich && \
 # Copy necessary files
 COPY ["mediczuwacz.py", "medihunter_notifiers.py", "/app/"]
 COPY params.csv /app/params.csv
+COPY params_ksenia.csv /app/params_ksenia.csv
 
 ENTRYPOINT ["python", "./mediczuwacz.py"]
