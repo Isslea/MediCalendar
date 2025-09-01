@@ -11,6 +11,7 @@ import string
 import uuid
 import argparse
 from collections import defaultdict
+from dataclasses import dataclass
 from urllib.parse import urlparse
 import datetime
 import requests
@@ -28,6 +29,20 @@ console = Console()
 
 # Load environment variables
 load_dotenv()
+
+@dataclass
+class User:
+    name: str
+    user: str
+    password: str
+    telegramChatId: str
+    telegramToken: str
+    file: str
+#users
+users = [
+    User("Klaudia", "MEDICOVER_USER", "MEDICOVER_PASS", "NOTIFIERS_TELEGRAM_CHAT_ID", "NOTIFIERS_TELEGRAM_TOKEN", "params.csv"),
+    User("Ksenia", "MEDICOVER_USER_KSENIA", "MEDICOVER_PASS_KSENIA", "NOTIFIERS_TELEGRAM_CHAT_ID_KSENIA", "NOTIFIERS_TELEGRAM_TOKEN_KSENIA", "params_ksenia.csv"),
+]
 
 class Authenticator:
     def __init__(self, username, password):
@@ -215,7 +230,7 @@ class Notifier:
         return "\n".join(messages)
 
     @staticmethod
-    def send_notification(appointments, notifier, title, stars):
+    def send_notification(appointments, notifier, title, stars, chat_id, token):
         """Send a notification with formatted appointments."""
         notifier = notifier.strip()
         message = Notifier.format_appointments(appointments, stars)
@@ -224,7 +239,7 @@ class Notifier:
         elif notifier == "pushover":
             pushover_notify(message, title)
         elif notifier == "telegram":
-            telegram_notify(message, title)
+            telegram_notify(message, title, chat_id, token)
         elif notifier == "gotify":
             gotify_notify(message, title)
 
@@ -296,8 +311,10 @@ def main():
 
     args = parser.parse_args()
 
-    username = os.environ.get("MEDICOVER_USER")
-    password = os.environ.get("MEDICOVER_PASS")
+    random_user = random.choice(users)
+    print(f"Selected {random_user}")
+    username = os.environ.get(random_user.user)
+    password = os.environ.get(random_user.password)
 
     if not username or not password:
         console.print("[bold red]Error:[/bold red] MEDICOVER_USER and MEDICOVER_PASS environment variables must be set.")
@@ -306,9 +323,7 @@ def main():
     print("jestem init")
     docker_path = '/app/shared'
     filename_doctors = f'{docker_path}/doctor_data.json'
-    params_file = '/app/params.csv'
     #filename_doctors = 'doctor_data.json'
-    #params_file = 'params.csv'
 
     while True:
         print("jestem while")
@@ -320,77 +335,80 @@ def main():
 
         if args.command == "find-appointment":
             print("jestem find-appointment")
-            if os.path.exists(params_file) and os.path.getsize(params_file) > 0:
-                with open(params_file, "r", newline="") as f:
-                    reader = csv.DictReader(f)
-                    params_from_file = list(reader)
-            else:
-                print("Params file not found")
-                params_from_file = []
 
-            for param in params_from_file:
-                print("jestem for")
-                if param['run'] == "no":
-                    continue
-
-                args.region = 202
-                args.specialty = int(param['service_id'])
-                args.doctor = int(param['doctor_id'])
-                args.star = int(param['stars'])
-                args.notification = 'telegram'
-
-                # Find appointments
-                if args.specialty == [519] or args.specialty == 519:
-                    search_type = "DiagnosticProcedure"
+            for user in users:
+                if os.path.exists(user.file) and os.path.getsize(user.file) > 0:
+                    with open(user.file, "r", newline="") as f:
+                        reader = csv.DictReader(f)
+                        params_from_file = list(reader)
                 else:
-                    search_type = 0
-                appointments = finder.find_appointments(args.region, args.specialty, args.clinic, args.date, args.enddate, args.language, search_type, args.doctor)
-                filtered_appointments = []
+                    print("Params file not found")
+                    params_from_file = []
 
-                #Read file with reminders of appointments
-                if os.path.exists(filename_doctors) and os.path.getsize(filename_doctors) > 0:
-                    with open(filename_doctors, "r") as f:
-                        doctors_from_file = json.load(f)
-                else:
-                    doctors_from_file = {}
+                for param in params_from_file:
+                    print("jestem for")
+                    if param['run'] == "no":
+                        continue
 
-                #Filter appointments
-                for appt in appointments:
-                    doctor_id = appt['doctor']['id']
-                    app_date =  appt['appointmentDate']
+                    args.region = 202
+                    args.specialty = int(param['service_id'])
+                    args.doctor = int(param['doctor_id'])
+                    args.star = int(param['stars'])
+                    args.notification = 'telegram'
 
-                    if doctor_id not in doctors_from_file:
-                        doctors_from_file[doctor_id] = []
-
-                    # Look for matching appointment date
-                    for existing_appt in doctors_from_file[doctor_id]:
-                        if existing_appt["appointmentDate"] == app_date:
-                            existing_appt["reminderCount"] += 1
-                            if existing_appt["reminderCount"] <= 3:
-                                filtered_appointments.append(appt)
-                            break
+                    # Find appointments
+                    if args.specialty == [519] or args.specialty == 519:
+                        search_type = "DiagnosticProcedure"
                     else:
-                        # No existing appointment found, add new one
-                        doctors_from_file[doctor_id].append({
-                            "appointmentDate": app_date,
-                            "reminderCount": 1
-                        })
-                        filtered_appointments.append(appt)
+                        search_type = 0
+                    appointments = finder.find_appointments(args.region, args.specialty, args.clinic, args.date, args.enddate, args.language, search_type, args.doctor)
+                    filtered_appointments = []
 
-                #Save file with reminders of appointments
-                with open(filename_doctors, "w") as f:
-                    json.dump(doctors_from_file, f, indent=4)
+                    #Read file with reminders of appointments
+                    if os.path.exists(filename_doctors) and os.path.getsize(filename_doctors) > 0:
+                        with open(filename_doctors, "r") as f:
+                            doctors_from_file = json.load(f)
+                    else:
+                        doctors_from_file = {}
 
-                # Display appointments
-                display_appointments(filtered_appointments)
-                console.print(f"All appointments: {len(appointments)}")
-                console.print(f"Filtered appointments: {len(filtered_appointments)}")
+                    #Filter appointments
+                    for appt in appointments:
+                        doctor_id = appt['doctor']['id']
+                        app_date =  appt['appointmentDate']
+                        key = f'{user.name}_{doctor_id}'
 
-                # Send notification if appointments are found
-                if filtered_appointments and (
-                        not args.exclude_today or not exclude_today_only(filtered_appointments)):
-                    Notifier.send_notification(filtered_appointments, args.notification, args.title, stars=args.stars)
-                time.sleep(5)
+                        if key not in doctors_from_file:
+                            doctors_from_file[key] = []
+
+                        # Look for matching appointment date
+                        for existing_appt in doctors_from_file[key]:
+                            if existing_appt["appointmentDate"] == app_date:
+                                existing_appt["reminderCount"] += 1
+                                if existing_appt["reminderCount"] <= 3:
+                                    filtered_appointments.append(appt)
+                                break
+                        else:
+                            # No existing appointment found, add new one
+                            doctors_from_file[key].append({
+                                "appointmentDate": app_date,
+                                "reminderCount": 1
+                            })
+                            filtered_appointments.append(appt)
+
+                    #Save file with reminders of appointments
+                    with open(filename_doctors, "w") as f:
+                        json.dump(doctors_from_file, f, indent=4)
+
+                    # Display appointments
+                    display_appointments(filtered_appointments)
+                    console.print(f"All appointments: {len(appointments)}")
+                    console.print(f"Filtered appointments: {len(filtered_appointments)}")
+
+                    # Send notification if appointments are found
+                    if filtered_appointments and (
+                            not args.exclude_today or not exclude_today_only(filtered_appointments)):
+                        Notifier.send_notification(filtered_appointments, args.notification, args.title, args.stars,  os.environ.get(user.telegramChatId), os.environ.get(user.telegramToken))
+                    time.sleep(5)
         elif args.command == "list-filters":
     
             if args.filter_type in ("doctors", "clinics"):

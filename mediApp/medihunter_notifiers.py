@@ -34,13 +34,15 @@ def pushover_notify(message, title: str = None):
         print(f'Pushover notification failed:\n{r.errors}')
 
 
-def telegram_notify(message, title: str = None):
+def telegram_notify(message, title: str = None, chat_id: str = None, token: str = None):
     try:
         if title:
             message = f"<b>{title}</b>\n{message}"
 
         r = telegram.notify(message=message,
-                            parse_mode='html')
+                            parse_mode='html',
+                            chat_id=chat_id,
+                            token=token)
     except BadArguments as e:
         print(f'Telegram notifications require NOTIFIERS_TELEGRAM_CHAT_ID'
               f' and NOTIFIERS_TELEGRAM_TOKEN environments to be exported. Detailed exception:\n{e}')
