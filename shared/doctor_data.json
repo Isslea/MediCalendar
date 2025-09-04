@@ -1786,7 +1786,7 @@
         },
         {
             "appointmentDate": "2025-10-13T08:00:00",
-            "reminderCount": 101
+            "reminderCount": 102
         },
         {
             "appointmentDate": "2025-10-13T08:15:00",
@@ -1794,7 +1794,7 @@
         },
         {
             "appointmentDate": "2025-10-13T09:45:00",
-            "reminderCount": 101
+            "reminderCount": 102
         },
         {
             "appointmentDate": "2025-10-13T10:00:00",
@@ -1802,11 +1802,11 @@
         },
         {
             "appointmentDate": "2025-10-13T10:45:00",
-            "reminderCount": 101
+            "reminderCount": 102
         },
         {
             "appointmentDate": "2025-10-13T11:45:00",
-            "reminderCount": 101
+            "reminderCount": 102
         },
         {
             "appointmentDate": "2025-10-13T12:00:00",
@@ -1814,11 +1814,11 @@
         },
         {
             "appointmentDate": "2025-10-13T09:30:00",
-            "reminderCount": 73
+            "reminderCount": 74
         },
         {
             "appointmentDate": "2025-10-13T11:30:00",
-            "reminderCount": 46
+            "reminderCount": 47
         },
         {
             "appointmentDate": "2025-09-08T11:30:00",
@@ -1826,7 +1826,7 @@
         },
         {
             "appointmentDate": "2025-10-13T13:45:00",
-            "reminderCount": 5
+            "reminderCount": 6
         }
     ],
     "Klaudia_103934": [
@@ -1860,7 +1860,7 @@
         },
         {
             "appointmentDate": "2025-09-19T11:00:00",
-            "reminderCount": 1
+            "reminderCount": 2
         }
     ],
     "Ksenia_103934": [
@@ -1894,7 +1894,7 @@
         },
         {
             "appointmentDate": "2025-09-19T11:00:00",
-            "reminderCount": 1
+            "reminderCount": 2
         }
     ],
     "Klaudia_465360": [
