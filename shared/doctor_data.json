@@ -1786,7 +1786,7 @@
         },
         {
             "appointmentDate": "2025-10-13T08:00:00",
-            "reminderCount": 121
+            "reminderCount": 122
         },
         {
             "appointmentDate": "2025-10-13T08:15:00",
@@ -1794,7 +1794,7 @@
         },
         {
             "appointmentDate": "2025-10-13T09:45:00",
-            "reminderCount": 121
+            "reminderCount": 122
         },
         {
             "appointmentDate": "2025-10-13T10:00:00",
@@ -1802,11 +1802,11 @@
         },
         {
             "appointmentDate": "2025-10-13T10:45:00",
-            "reminderCount": 121
+            "reminderCount": 122
         },
         {
             "appointmentDate": "2025-10-13T11:45:00",
-            "reminderCount": 121
+            "reminderCount": 122
         },
         {
             "appointmentDate": "2025-10-13T12:00:00",
@@ -1826,11 +1826,11 @@
         },
         {
             "appointmentDate": "2025-10-13T13:45:00",
-            "reminderCount": 25
+            "reminderCount": 26
         },
         {
             "appointmentDate": "2025-10-06T13:45:00",
-            "reminderCount": 8
+            "reminderCount": 9
         }
     ],
     "Klaudia_103934": [
