@@ -1806,7 +1806,7 @@
         },
         {
             "appointmentDate": "2025-10-13T11:45:00",
-            "reminderCount": 222
+            "reminderCount": 223
         },
         {
             "appointmentDate": "2025-10-13T12:00:00",
@@ -1886,7 +1886,7 @@
         },
         {
             "appointmentDate": "2025-09-08T13:45:00",
-            "reminderCount": 5
+            "reminderCount": 6
         }
     ],
     "Klaudia_103934": [
@@ -2012,7 +2012,7 @@
         },
         {
             "appointmentDate": "2025-09-08T14:15:00",
-            "reminderCount": 11
+            "reminderCount": 12
         },
         {
             "appointmentDate": "2025-09-08T14:30:00",
@@ -2020,11 +2020,11 @@
         },
         {
             "appointmentDate": "2025-09-08T14:00:00",
-            "reminderCount": 4
+            "reminderCount": 5
         },
         {
             "appointmentDate": "2025-09-08T12:40:00",
-            "reminderCount": 6
+            "reminderCount": 7
         },
         {
             "appointmentDate": "2025-09-08T13:00:00",
