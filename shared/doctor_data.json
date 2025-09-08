@@ -1961,6 +1961,30 @@
         {
             "appointmentDate": "2025-09-08T10:00:00",
             "reminderCount": 1
+        },
+        {
+            "appointmentDate": "2025-09-23T09:00:00",
+            "reminderCount": 1
+        },
+        {
+            "appointmentDate": "2025-09-23T09:15:00",
+            "reminderCount": 1
+        },
+        {
+            "appointmentDate": "2025-09-23T10:00:00",
+            "reminderCount": 1
+        },
+        {
+            "appointmentDate": "2025-09-23T11:30:00",
+            "reminderCount": 1
+        },
+        {
+            "appointmentDate": "2025-09-23T12:15:00",
+            "reminderCount": 1
+        },
+        {
+            "appointmentDate": "2025-09-23T12:45:00",
+            "reminderCount": 1
         }
     ],
     "Ksenia_103934": [
@@ -2002,6 +2026,30 @@
         },
         {
             "appointmentDate": "2025-09-08T10:00:00",
+            "reminderCount": 1
+        },
+        {
+            "appointmentDate": "2025-09-23T09:00:00",
+            "reminderCount": 1
+        },
+        {
+            "appointmentDate": "2025-09-23T09:15:00",
+            "reminderCount": 1
+        },
+        {
+            "appointmentDate": "2025-09-23T10:00:00",
+            "reminderCount": 1
+        },
+        {
+            "appointmentDate": "2025-09-23T11:30:00",
+            "reminderCount": 1
+        },
+        {
+            "appointmentDate": "2025-09-23T12:15:00",
+            "reminderCount": 1
+        },
+        {
+            "appointmentDate": "2025-09-23T12:45:00",
             "reminderCount": 1
         }
     ],
