@@ -1914,7 +1914,7 @@
         },
         {
             "appointmentDate": "2025-10-20T13:45:00",
-            "reminderCount": 184
+            "reminderCount": 185
         },
         {
             "appointmentDate": "2025-09-22T08:15:00",
@@ -2028,7 +2028,7 @@
         },
         {
             "appointmentDate": "2025-09-15T10:30:00",
-            "reminderCount": 1
+            "reminderCount": 2
         }
     ],
     "Ksenia_103934": [
@@ -2180,7 +2180,7 @@
         },
         {
             "appointmentDate": "2025-10-13T10:15:00",
-            "reminderCount": 52
+            "reminderCount": 53
         },
         {
             "appointmentDate": "2025-10-13T10:00:00",
