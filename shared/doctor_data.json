@@ -1914,7 +1914,7 @@
         },
         {
             "appointmentDate": "2025-10-20T13:45:00",
-            "reminderCount": 181
+            "reminderCount": 182
         },
         {
             "appointmentDate": "2025-09-22T08:15:00",
@@ -2025,6 +2025,10 @@
         {
             "appointmentDate": "2025-09-12T11:00:00",
             "reminderCount": 1
+        },
+        {
+            "appointmentDate": "2025-09-15T10:30:00",
+            "reminderCount": 1
         }
     ],
     "Ksenia_103934": [
@@ -2107,6 +2111,10 @@
         {
             "appointmentDate": "2025-09-12T11:00:00",
             "reminderCount": 1
+        },
+        {
+            "appointmentDate": "2025-09-15T10:30:00",
+            "reminderCount": 1
         }
     ],
     "Klaudia_465360": [
@@ -2172,7 +2180,7 @@
         },
         {
             "appointmentDate": "2025-10-13T10:15:00",
-            "reminderCount": 49
+            "reminderCount": 50
         },
         {
             "appointmentDate": "2025-10-13T10:00:00",
