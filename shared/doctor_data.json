@@ -2204,7 +2204,7 @@
         },
         {
             "appointmentDate": "2025-10-06T10:15:00",
-            "reminderCount": 4
+            "reminderCount": 5
         },
         {
             "appointmentDate": "2025-10-06T10:00:00",
@@ -2256,7 +2256,7 @@
         },
         {
             "appointmentDate": "2025-10-13T10:00:00",
-            "reminderCount": 35
+            "reminderCount": 36
         },
         {
             "appointmentDate": "2025-09-15T10:30:00",
