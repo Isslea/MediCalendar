@@ -1340,7 +1340,7 @@
         },
         {
             "appointmentDate": "2025-10-03T10:15:00",
-            "reminderCount": 2
+            "reminderCount": 3
         },
         {
             "appointmentDate": "2025-10-03T12:00:00",
@@ -1348,7 +1348,11 @@
         },
         {
             "appointmentDate": "2025-10-03T12:30:00",
-            "reminderCount": 2
+            "reminderCount": 3
+        },
+        {
+            "appointmentDate": "2025-10-03T09:30:00",
+            "reminderCount": 1
         }
     ],
     "Ksenia_103934": [
@@ -1454,7 +1458,7 @@
         },
         {
             "appointmentDate": "2025-10-03T10:15:00",
-            "reminderCount": 2
+            "reminderCount": 3
         },
         {
             "appointmentDate": "2025-10-03T12:00:00",
@@ -1462,7 +1466,11 @@
         },
         {
             "appointmentDate": "2025-10-03T12:30:00",
-            "reminderCount": 2
+            "reminderCount": 3
+        },
+        {
+            "appointmentDate": "2025-10-03T09:30:00",
+            "reminderCount": 1
         }
     ],
     "Klaudia_3450": [
@@ -1516,27 +1524,31 @@
         },
         {
             "appointmentDate": "2025-10-03T11:00:00",
-            "reminderCount": 2
+            "reminderCount": 3
         },
         {
             "appointmentDate": "2025-10-03T12:15:00",
-            "reminderCount": 2
+            "reminderCount": 3
         },
         {
             "appointmentDate": "2025-10-03T13:45:00",
-            "reminderCount": 2
+            "reminderCount": 3
         },
         {
             "appointmentDate": "2025-10-03T14:15:00",
-            "reminderCount": 2
+            "reminderCount": 3
         },
         {
             "appointmentDate": "2025-10-03T14:45:00",
-            "reminderCount": 2
+            "reminderCount": 3
         },
         {
             "appointmentDate": "2025-10-03T15:15:00",
-            "reminderCount": 2
+            "reminderCount": 3
+        },
+        {
+            "appointmentDate": "2025-10-03T11:30:00",
+            "reminderCount": 1
         }
     ],
     "Klaudia_465360": [
