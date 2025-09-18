@@ -1336,19 +1336,19 @@
         },
         {
             "appointmentDate": "2025-10-03T09:45:00",
-            "reminderCount": 1
+            "reminderCount": 2
         },
         {
             "appointmentDate": "2025-10-03T10:15:00",
-            "reminderCount": 1
+            "reminderCount": 2
         },
         {
             "appointmentDate": "2025-10-03T12:00:00",
-            "reminderCount": 1
+            "reminderCount": 2
         },
         {
             "appointmentDate": "2025-10-03T12:30:00",
-            "reminderCount": 1
+            "reminderCount": 2
         }
     ],
     "Ksenia_103934": [
@@ -1450,19 +1450,19 @@
         },
         {
             "appointmentDate": "2025-10-03T09:45:00",
-            "reminderCount": 1
+            "reminderCount": 2
         },
         {
             "appointmentDate": "2025-10-03T10:15:00",
-            "reminderCount": 1
+            "reminderCount": 2
         },
         {
             "appointmentDate": "2025-10-03T12:00:00",
-            "reminderCount": 1
+            "reminderCount": 2
         },
         {
             "appointmentDate": "2025-10-03T12:30:00",
-            "reminderCount": 1
+            "reminderCount": 2
         }
     ],
     "Klaudia_3450": [
@@ -1516,27 +1516,27 @@
         },
         {
             "appointmentDate": "2025-10-03T11:00:00",
-            "reminderCount": 1
+            "reminderCount": 2
         },
         {
             "appointmentDate": "2025-10-03T12:15:00",
-            "reminderCount": 1
+            "reminderCount": 2
         },
         {
             "appointmentDate": "2025-10-03T13:45:00",
-            "reminderCount": 1
+            "reminderCount": 2
         },
         {
             "appointmentDate": "2025-10-03T14:15:00",
-            "reminderCount": 1
+            "reminderCount": 2
         },
         {
             "appointmentDate": "2025-10-03T14:45:00",
-            "reminderCount": 1
+            "reminderCount": 2
         },
         {
             "appointmentDate": "2025-10-03T15:15:00",
-            "reminderCount": 1
+            "reminderCount": 2
         }
     ],
     "Klaudia_465360": [
@@ -1546,7 +1546,7 @@
         },
         {
             "appointmentDate": "2025-10-13T10:00:00",
-            "reminderCount": 100
+            "reminderCount": 101
         },
         {
             "appointmentDate": "2025-09-15T14:15:00",
