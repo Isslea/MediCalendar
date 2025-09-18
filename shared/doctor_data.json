@@ -1325,6 +1325,10 @@
         {
             "appointmentDate": "2025-09-15T10:45:00",
             "reminderCount": 1
+        },
+        {
+            "appointmentDate": "2025-09-19T08:30:00",
+            "reminderCount": 1
         }
     ],
     "Ksenia_103934": [
@@ -1415,6 +1419,10 @@
         {
             "appointmentDate": "2025-09-15T10:45:00",
             "reminderCount": 1
+        },
+        {
+            "appointmentDate": "2025-09-19T08:30:00",
+            "reminderCount": 1
         }
     ],
     "Klaudia_3450": [
@@ -1474,7 +1482,7 @@
         },
         {
             "appointmentDate": "2025-10-13T10:00:00",
-            "reminderCount": 92
+            "reminderCount": 93
         },
         {
             "appointmentDate": "2025-09-15T14:15:00",
