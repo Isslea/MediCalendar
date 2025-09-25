@@ -1695,6 +1695,18 @@
         {
             "appointmentDate": "2025-09-26T10:15:00",
             "reminderCount": 2
+        },
+        {
+            "appointmentDate": "2025-09-26T09:45:00",
+            "reminderCount": 1
+        },
+        {
+            "appointmentDate": "2025-09-26T11:30:00",
+            "reminderCount": 1
+        },
+        {
+            "appointmentDate": "2025-09-26T11:45:00",
+            "reminderCount": 1
         }
     ]
 }
