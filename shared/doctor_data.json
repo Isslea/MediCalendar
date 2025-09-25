@@ -1642,7 +1642,7 @@
     "Klaudia_508812": [
         {
             "appointmentDate": "2025-10-24T12:15:00",
-            "reminderCount": 18
+            "reminderCount": 19
         },
         {
             "appointmentDate": "2025-10-24T12:30:00",
@@ -1686,7 +1686,7 @@
         },
         {
             "appointmentDate": "2025-10-03T14:00:00",
-            "reminderCount": 1
+            "reminderCount": 2
         }
     ]
 }
