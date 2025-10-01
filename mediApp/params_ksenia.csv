@@ -1,3 +1,4 @@
 run,service_id,doctor_id,name,stars
-no,3,103934,dermatolog - Czubak,3
+yes,3,103934,dermatolog - Czubak,3
+yes,3,3450,detmatolog - wegrzynek,3
 no,4798,499580,test Bojar,3
