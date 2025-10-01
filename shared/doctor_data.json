@@ -1752,5 +1752,15 @@
             "appointmentDate": "2025-09-26T13:45:00",
             "reminderCount": 4
         }
+    ],
+    "Ksenia_3450": [
+        {
+            "appointmentDate": "2025-10-16T13:45:00",
+            "reminderCount": 1
+        },
+        {
+            "appointmentDate": "2025-10-16T15:15:00",
+            "reminderCount": 1
+        }
     ]
 }
