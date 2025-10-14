@@ -1674,11 +1674,11 @@
         },
         {
             "appointmentDate": "2025-10-14T15:30:00",
-            "reminderCount": 3
+            "reminderCount": 4
         },
         {
             "appointmentDate": "2025-10-14T16:15:00",
-            "reminderCount": 3
+            "reminderCount": 4
         },
         {
             "appointmentDate": "2025-10-14T16:30:00",
