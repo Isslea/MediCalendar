@@ -1656,7 +1656,7 @@
         },
         {
             "appointmentDate": "2025-11-06T14:45:00",
-            "reminderCount": 4
+            "reminderCount": 5
         },
         {
             "appointmentDate": "2025-11-06T15:30:00",
@@ -2168,7 +2168,7 @@
         },
         {
             "appointmentDate": "2025-11-06T14:45:00",
-            "reminderCount": 4
+            "reminderCount": 5
         },
         {
             "appointmentDate": "2025-11-06T15:30:00",
