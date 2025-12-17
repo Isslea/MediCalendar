@@ -352,7 +352,7 @@ def main():
 
                     args.region = 202
                     args.specialty = int(param['service_id'])
-                    args.doctor = int(param['doctor_id'])
+                    args.doctor = int(param['doctor_id']) if param.get('doctor_id') else None
                     args.star = int(param['stars'])
                     args.notification = 'telegram'
 
