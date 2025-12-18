@@ -3749,6 +3749,10 @@
         {
             "appointmentDate": "2025-12-21T13:50:00",
             "reminderCount": 13
+        },
+        {
+            "appointmentDate": "2025-12-19T08:00:00",
+            "reminderCount": 1
         }
     ],
     "Klaudia_487782": [
@@ -3810,6 +3814,28 @@
         },
         {
             "appointmentDate": "2025-12-18T07:40:00",
+            "reminderCount": 1
+        },
+        {
+            "appointmentDate": "2025-12-18T08:20:00",
+            "reminderCount": 1
+        },
+        {
+            "appointmentDate": "2025-12-18T08:30:00",
+            "reminderCount": 1
+        },
+        {
+            "appointmentDate": "2025-12-18T08:40:00",
+            "reminderCount": 1
+        }
+    ],
+    "Klaudia_353472": [
+        {
+            "appointmentDate": "2025-12-18T10:10:00",
+            "reminderCount": 1
+        },
+        {
+            "appointmentDate": "2025-12-18T10:20:00",
             "reminderCount": 1
         }
     ]
