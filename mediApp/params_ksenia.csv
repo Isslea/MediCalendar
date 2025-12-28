@@ -2,3 +2,5 @@ run,service_id,doctor_id,name,stars
 no,3,103934,dermatolog - Czubak,3
 no,3,3450,detmatolog - wegrzynek,3
 no,4798,499580,test Bojar,3
+yes,4798,227232,ginekolog - Trybus,3
+yes,4798,508812,ginekolog - Żabicka,2
