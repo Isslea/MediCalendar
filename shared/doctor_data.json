@@ -4068,15 +4068,15 @@
         },
         {
             "appointmentDate": "2026-01-28T15:15:00",
-            "reminderCount": 3
+            "reminderCount": 4
         },
         {
             "appointmentDate": "2026-01-29T07:45:00",
-            "reminderCount": 1
+            "reminderCount": 2
         },
         {
             "appointmentDate": "2026-01-29T08:30:00",
-            "reminderCount": 1
+            "reminderCount": 2
         }
     ]
 }
