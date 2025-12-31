@@ -4032,7 +4032,7 @@
         },
         {
             "appointmentDate": "2026-01-27T11:15:00",
-            "reminderCount": 4
+            "reminderCount": 5
         },
         {
             "appointmentDate": "2026-01-27T11:30:00",
@@ -4072,7 +4072,7 @@
         },
         {
             "appointmentDate": "2026-01-29T07:45:00",
-            "reminderCount": 8
+            "reminderCount": 9
         },
         {
             "appointmentDate": "2026-01-29T08:30:00",
