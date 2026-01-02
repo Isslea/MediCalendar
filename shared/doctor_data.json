@@ -4131,6 +4131,10 @@
         {
             "appointmentDate": "2026-01-02T09:45:00",
             "reminderCount": 3
+        },
+        {
+            "appointmentDate": "2026-01-02T13:45:00",
+            "reminderCount": 1
         }
     ]
 }
