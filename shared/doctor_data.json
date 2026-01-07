@@ -1221,6 +1221,22 @@
         {
             "appointmentDate": "2026-01-20T15:50:00",
             "reminderCount": 1
+        },
+        {
+            "appointmentDate": "2026-01-07T14:00:00",
+            "reminderCount": 1
+        },
+        {
+            "appointmentDate": "2026-01-07T14:10:00",
+            "reminderCount": 1
+        },
+        {
+            "appointmentDate": "2026-01-07T14:20:00",
+            "reminderCount": 1
+        },
+        {
+            "appointmentDate": "2026-01-07T14:30:00",
+            "reminderCount": 1
         }
     ],
     "Ksenia_499580": [
@@ -2068,11 +2084,11 @@
         },
         {
             "appointmentDate": "2026-01-13T23:10:00",
-            "reminderCount": 14
+            "reminderCount": 15
         },
         {
             "appointmentDate": "2026-01-13T23:20:00",
-            "reminderCount": 14
+            "reminderCount": 15
         },
         {
             "appointmentDate": "2026-01-09T06:10:00",
@@ -4244,7 +4260,7 @@
         },
         {
             "appointmentDate": "2026-02-05T07:30:00",
-            "reminderCount": 8
+            "reminderCount": 9
         },
         {
             "appointmentDate": "2026-02-05T07:45:00",
