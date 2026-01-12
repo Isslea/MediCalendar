@@ -4504,38 +4504,46 @@
         },
         {
             "appointmentDate": "2026-02-10T08:00:00",
-            "reminderCount": 1
+            "reminderCount": 2
         },
         {
             "appointmentDate": "2026-02-10T08:30:00",
-            "reminderCount": 1
+            "reminderCount": 2
         },
         {
             "appointmentDate": "2026-02-10T10:00:00",
-            "reminderCount": 1
+            "reminderCount": 2
         },
         {
             "appointmentDate": "2026-02-10T10:45:00",
-            "reminderCount": 1
+            "reminderCount": 2
         },
         {
             "appointmentDate": "2026-02-10T11:15:00",
-            "reminderCount": 1
+            "reminderCount": 2
         },
         {
             "appointmentDate": "2026-02-10T11:30:00",
-            "reminderCount": 1
+            "reminderCount": 2
         },
         {
             "appointmentDate": "2026-02-10T12:30:00",
-            "reminderCount": 1
+            "reminderCount": 2
         },
         {
             "appointmentDate": "2026-02-10T12:45:00",
-            "reminderCount": 1
+            "reminderCount": 2
         },
         {
             "appointmentDate": "2026-02-10T13:00:00",
+            "reminderCount": 2
+        },
+        {
+            "appointmentDate": "2026-01-12T13:30:00",
+            "reminderCount": 1
+        },
+        {
+            "appointmentDate": "2026-01-12T13:45:00",
             "reminderCount": 1
         }
     ],
@@ -4672,7 +4680,7 @@
         },
         {
             "appointmentDate": "2026-01-26T13:50:00",
-            "reminderCount": 1
+            "reminderCount": 2
         }
     ],
     "Klaudia_139528": [
@@ -5000,6 +5008,16 @@
     "Klaudia_519842": [
         {
             "appointmentDate": "2026-01-12T07:15:00",
+            "reminderCount": 2
+        },
+        {
+            "appointmentDate": "2026-01-12T08:00:00",
+            "reminderCount": 1
+        }
+    ],
+    "Klaudia_333476": [
+        {
+            "appointmentDate": "2026-01-12T08:30:00",
             "reminderCount": 1
         }
     ]
