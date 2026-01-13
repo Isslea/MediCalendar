@@ -1252,27 +1252,27 @@
         },
         {
             "appointmentDate": "2026-01-27T15:00:00",
-            "reminderCount": 19
+            "reminderCount": 20
         },
         {
             "appointmentDate": "2026-01-27T15:10:00",
-            "reminderCount": 19
+            "reminderCount": 20
         },
         {
             "appointmentDate": "2026-01-27T15:20:00",
-            "reminderCount": 19
+            "reminderCount": 20
         },
         {
             "appointmentDate": "2026-01-27T15:30:00",
-            "reminderCount": 19
+            "reminderCount": 20
         },
         {
             "appointmentDate": "2026-01-27T15:40:00",
-            "reminderCount": 19
+            "reminderCount": 20
         },
         {
             "appointmentDate": "2026-01-27T15:50:00",
-            "reminderCount": 19
+            "reminderCount": 20
         }
     ],
     "Ksenia_499580": [
@@ -4613,6 +4613,14 @@
         {
             "appointmentDate": "2026-01-14T15:15:00",
             "reminderCount": 1
+        },
+        {
+            "appointmentDate": "2026-01-14T14:30:00",
+            "reminderCount": 1
+        },
+        {
+            "appointmentDate": "2026-01-14T14:45:00",
+            "reminderCount": 1
         }
     ],
     "Ksenia_508812": [
@@ -4756,11 +4764,11 @@
         },
         {
             "appointmentDate": "2026-01-27T10:10:00",
-            "reminderCount": 14
+            "reminderCount": 15
         },
         {
             "appointmentDate": "2026-01-27T10:20:00",
-            "reminderCount": 18
+            "reminderCount": 19
         },
         {
             "appointmentDate": "2026-01-13T14:30:00",
