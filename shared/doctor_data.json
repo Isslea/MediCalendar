@@ -1252,27 +1252,27 @@
         },
         {
             "appointmentDate": "2026-01-27T15:00:00",
-            "reminderCount": 2
+            "reminderCount": 3
         },
         {
             "appointmentDate": "2026-01-27T15:10:00",
-            "reminderCount": 2
+            "reminderCount": 3
         },
         {
             "appointmentDate": "2026-01-27T15:20:00",
-            "reminderCount": 2
+            "reminderCount": 3
         },
         {
             "appointmentDate": "2026-01-27T15:30:00",
-            "reminderCount": 2
+            "reminderCount": 3
         },
         {
             "appointmentDate": "2026-01-27T15:40:00",
-            "reminderCount": 2
+            "reminderCount": 3
         },
         {
             "appointmentDate": "2026-01-27T15:50:00",
-            "reminderCount": 2
+            "reminderCount": 3
         }
     ],
     "Ksenia_499580": [
@@ -2141,6 +2141,10 @@
         {
             "appointmentDate": "2026-01-12T22:20:00",
             "reminderCount": 4
+        },
+        {
+            "appointmentDate": "2026-01-13T08:15:00",
+            "reminderCount": 1
         }
     ],
     "Klaudia_508812": [
@@ -4580,7 +4584,7 @@
         },
         {
             "appointmentDate": "2026-01-13T08:15:00",
-            "reminderCount": 2
+            "reminderCount": 3
         }
     ],
     "Ksenia_508812": [
@@ -4720,15 +4724,15 @@
         },
         {
             "appointmentDate": "2026-01-27T10:00:00",
-            "reminderCount": 2
+            "reminderCount": 3
         },
         {
             "appointmentDate": "2026-01-27T10:10:00",
-            "reminderCount": 2
+            "reminderCount": 3
         },
         {
             "appointmentDate": "2026-01-27T10:20:00",
-            "reminderCount": 2
+            "reminderCount": 3
         }
     ],
     "Klaudia_139528": [
@@ -4770,7 +4774,7 @@
         },
         {
             "appointmentDate": "2026-01-27T09:30:00",
-            "reminderCount": 2
+            "reminderCount": 3
         }
     ],
     "Klaudia_605652": [
@@ -4780,11 +4784,11 @@
         },
         {
             "appointmentDate": "2026-01-27T13:30:00",
-            "reminderCount": 2
+            "reminderCount": 3
         },
         {
             "appointmentDate": "2026-01-27T13:40:00",
-            "reminderCount": 2
+            "reminderCount": 3
         }
     ],
     "Klaudia_579860": [
