@@ -2335,6 +2335,10 @@
         {
             "appointmentDate": "2026-01-16T12:45:00",
             "reminderCount": 1
+        },
+        {
+            "appointmentDate": "2026-01-16T13:45:00",
+            "reminderCount": 1
         }
     ],
     "Ksenia_3450": [
@@ -4830,6 +4834,10 @@
         },
         {
             "appointmentDate": "2026-01-16T12:45:00",
+            "reminderCount": 1
+        },
+        {
+            "appointmentDate": "2026-01-16T13:45:00",
             "reminderCount": 1
         }
     ],
