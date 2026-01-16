@@ -2318,15 +2318,15 @@
         },
         {
             "appointmentDate": "2026-01-16T08:00:00",
-            "reminderCount": 3
+            "reminderCount": 4
         },
         {
             "appointmentDate": "2026-01-16T10:00:00",
-            "reminderCount": 1
+            "reminderCount": 2
         },
         {
             "appointmentDate": "2026-01-16T11:45:00",
-            "reminderCount": 1
+            "reminderCount": 2
         }
     ],
     "Ksenia_3450": [
@@ -4806,15 +4806,15 @@
         },
         {
             "appointmentDate": "2026-01-16T08:00:00",
-            "reminderCount": 3
+            "reminderCount": 4
         },
         {
             "appointmentDate": "2026-01-16T10:00:00",
-            "reminderCount": 1
+            "reminderCount": 2
         },
         {
             "appointmentDate": "2026-01-16T11:45:00",
-            "reminderCount": 1
+            "reminderCount": 2
         }
     ],
     "Klaudia_149886": [
