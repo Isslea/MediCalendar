@@ -4753,6 +4753,10 @@
         {
             "appointmentDate": "2026-01-19T12:45:00",
             "reminderCount": 1
+        },
+        {
+            "appointmentDate": "2026-01-20T08:30:00",
+            "reminderCount": 1
         }
     ],
     "Ksenia_508812": [
