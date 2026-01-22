@@ -2342,10 +2342,34 @@
         },
         {
             "appointmentDate": "2026-01-23T13:30:00",
-            "reminderCount": 5
+            "reminderCount": 6
         },
         {
             "appointmentDate": "2026-01-23T12:15:00",
+            "reminderCount": 1
+        },
+        {
+            "appointmentDate": "2026-02-20T12:15:00",
+            "reminderCount": 1
+        },
+        {
+            "appointmentDate": "2026-02-20T12:30:00",
+            "reminderCount": 1
+        },
+        {
+            "appointmentDate": "2026-02-20T13:00:00",
+            "reminderCount": 1
+        },
+        {
+            "appointmentDate": "2026-02-20T13:15:00",
+            "reminderCount": 1
+        },
+        {
+            "appointmentDate": "2026-02-20T13:30:00",
+            "reminderCount": 1
+        },
+        {
+            "appointmentDate": "2026-02-20T14:00:00",
             "reminderCount": 1
         }
     ],
@@ -4808,7 +4832,7 @@
         },
         {
             "appointmentDate": "2026-01-22T08:00:00",
-            "reminderCount": 5
+            "reminderCount": 6
         }
     ],
     "Ksenia_508812": [
@@ -4966,10 +4990,34 @@
         },
         {
             "appointmentDate": "2026-01-23T13:30:00",
-            "reminderCount": 5
+            "reminderCount": 6
         },
         {
             "appointmentDate": "2026-01-23T12:15:00",
+            "reminderCount": 1
+        },
+        {
+            "appointmentDate": "2026-02-20T12:15:00",
+            "reminderCount": 1
+        },
+        {
+            "appointmentDate": "2026-02-20T12:30:00",
+            "reminderCount": 1
+        },
+        {
+            "appointmentDate": "2026-02-20T13:00:00",
+            "reminderCount": 1
+        },
+        {
+            "appointmentDate": "2026-02-20T13:15:00",
+            "reminderCount": 1
+        },
+        {
+            "appointmentDate": "2026-02-20T13:30:00",
+            "reminderCount": 1
+        },
+        {
+            "appointmentDate": "2026-02-20T14:00:00",
             "reminderCount": 1
         }
     ],
