@@ -2350,7 +2350,7 @@
         },
         {
             "appointmentDate": "2026-02-20T12:15:00",
-            "reminderCount": 9
+            "reminderCount": 10
         },
         {
             "appointmentDate": "2026-02-20T12:30:00",
@@ -2358,7 +2358,7 @@
         },
         {
             "appointmentDate": "2026-02-20T13:00:00",
-            "reminderCount": 9
+            "reminderCount": 10
         },
         {
             "appointmentDate": "2026-02-20T13:15:00",
@@ -2366,11 +2366,11 @@
         },
         {
             "appointmentDate": "2026-02-20T13:30:00",
-            "reminderCount": 9
+            "reminderCount": 10
         },
         {
             "appointmentDate": "2026-02-20T14:00:00",
-            "reminderCount": 9
+            "reminderCount": 10
         },
         {
             "appointmentDate": "2026-01-23T12:45:00",
@@ -2378,7 +2378,7 @@
         },
         {
             "appointmentDate": "2026-02-20T12:45:00",
-            "reminderCount": 5
+            "reminderCount": 6
         }
     ],
     "Ksenia_3450": [
@@ -5010,7 +5010,7 @@
         },
         {
             "appointmentDate": "2026-02-20T12:15:00",
-            "reminderCount": 9
+            "reminderCount": 10
         },
         {
             "appointmentDate": "2026-02-20T12:30:00",
@@ -5018,7 +5018,7 @@
         },
         {
             "appointmentDate": "2026-02-20T13:00:00",
-            "reminderCount": 9
+            "reminderCount": 10
         },
         {
             "appointmentDate": "2026-02-20T13:15:00",
@@ -5026,11 +5026,11 @@
         },
         {
             "appointmentDate": "2026-02-20T13:30:00",
-            "reminderCount": 9
+            "reminderCount": 10
         },
         {
             "appointmentDate": "2026-02-20T14:00:00",
-            "reminderCount": 9
+            "reminderCount": 10
         },
         {
             "appointmentDate": "2026-01-23T12:45:00",
@@ -5038,7 +5038,7 @@
         },
         {
             "appointmentDate": "2026-02-20T12:45:00",
-            "reminderCount": 5
+            "reminderCount": 6
         }
     ],
     "Klaudia_149886": [
