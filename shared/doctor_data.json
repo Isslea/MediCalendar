@@ -4760,7 +4760,7 @@
         },
         {
             "appointmentDate": "2026-01-28T15:00:00",
-            "reminderCount": 1
+            "reminderCount": 2
         },
         {
             "appointmentDate": "2026-01-20T10:00:00",
@@ -4984,6 +4984,10 @@
         },
         {
             "appointmentDate": "2026-01-28T15:45:00",
+            "reminderCount": 1
+        },
+        {
+            "appointmentDate": "2026-01-28T15:30:00",
             "reminderCount": 1
         }
     ],
