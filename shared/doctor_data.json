@@ -2418,11 +2418,11 @@
         },
         {
             "appointmentDate": "2026-02-27T13:00:00",
-            "reminderCount": 7
+            "reminderCount": 8
         },
         {
             "appointmentDate": "2026-02-27T13:15:00",
-            "reminderCount": 7
+            "reminderCount": 8
         },
         {
             "appointmentDate": "2026-02-27T13:30:00",
@@ -2438,6 +2438,10 @@
         },
         {
             "appointmentDate": "2026-01-30T12:00:00",
+            "reminderCount": 1
+        },
+        {
+            "appointmentDate": "2026-02-27T12:00:00",
             "reminderCount": 1
         }
     ],
@@ -5258,11 +5262,11 @@
         },
         {
             "appointmentDate": "2026-02-27T13:00:00",
-            "reminderCount": 7
+            "reminderCount": 8
         },
         {
             "appointmentDate": "2026-02-27T13:15:00",
-            "reminderCount": 7
+            "reminderCount": 8
         },
         {
             "appointmentDate": "2026-02-27T13:30:00",
@@ -5270,6 +5274,10 @@
         },
         {
             "appointmentDate": "2026-02-27T14:00:00",
+            "reminderCount": 1
+        },
+        {
+            "appointmentDate": "2026-02-27T12:00:00",
             "reminderCount": 1
         }
     ],
