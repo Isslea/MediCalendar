@@ -5076,7 +5076,7 @@
         },
         {
             "appointmentDate": "2026-03-03T12:30:00",
-            "reminderCount": 4
+            "reminderCount": 5
         },
         {
             "appointmentDate": "2026-03-03T12:45:00",
@@ -5092,7 +5092,7 @@
         },
         {
             "appointmentDate": "2026-03-03T08:30:00",
-            "reminderCount": 3
+            "reminderCount": 4
         },
         {
             "appointmentDate": "2026-03-03T10:30:00",
@@ -5412,7 +5412,7 @@
         },
         {
             "appointmentDate": "2026-02-16T13:40:00",
-            "reminderCount": 4
+            "reminderCount": 5
         },
         {
             "appointmentDate": "2026-02-16T13:50:00",
