@@ -5344,7 +5344,7 @@
         },
         {
             "appointmentDate": "2026-03-17T10:00:00",
-            "reminderCount": 2
+            "reminderCount": 3
         },
         {
             "appointmentDate": "2026-03-17T10:30:00",
@@ -5352,7 +5352,7 @@
         },
         {
             "appointmentDate": "2026-03-17T10:45:00",
-            "reminderCount": 2
+            "reminderCount": 3
         },
         {
             "appointmentDate": "2026-03-17T11:15:00",
@@ -5360,19 +5360,19 @@
         },
         {
             "appointmentDate": "2026-03-17T11:30:00",
-            "reminderCount": 2
+            "reminderCount": 3
         },
         {
             "appointmentDate": "2026-03-17T12:00:00",
-            "reminderCount": 2
+            "reminderCount": 3
         },
         {
             "appointmentDate": "2026-03-17T12:15:00",
-            "reminderCount": 2
+            "reminderCount": 3
         },
         {
             "appointmentDate": "2026-03-17T12:30:00",
-            "reminderCount": 2
+            "reminderCount": 3
         },
         {
             "appointmentDate": "2026-03-17T12:45:00",
