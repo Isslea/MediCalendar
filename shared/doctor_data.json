@@ -5082,19 +5082,19 @@
         },
         {
             "appointmentDate": "2026-03-23T13:00:00",
-            "reminderCount": 1
+            "reminderCount": 2
         },
         {
             "appointmentDate": "2026-03-23T13:15:00",
-            "reminderCount": 1
+            "reminderCount": 2
         },
         {
             "appointmentDate": "2026-03-23T15:00:00",
-            "reminderCount": 1
+            "reminderCount": 2
         },
         {
             "appointmentDate": "2026-03-23T15:45:00",
-            "reminderCount": 1
+            "reminderCount": 2
         }
     ],
     "Ksenia_508812": [
