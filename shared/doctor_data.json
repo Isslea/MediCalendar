@@ -5210,7 +5210,7 @@
         },
         {
             "appointmentDate": "2026-03-19T07:15:00",
-            "reminderCount": 1
+            "reminderCount": 2
         },
         {
             "appointmentDate": "2026-03-26T07:15:00",
@@ -5592,7 +5592,7 @@
         },
         {
             "appointmentDate": "2026-03-27T12:00:00",
-            "reminderCount": 2
+            "reminderCount": 3
         }
     ],
     "Klaudia_149886": [
@@ -6156,7 +6156,7 @@
         },
         {
             "appointmentDate": "2026-03-27T12:00:00",
-            "reminderCount": 2
+            "reminderCount": 3
         }
     ]
 }
