@@ -1,27 +1,25 @@
 #!/usr/bin/python3
 
+import argparse
 import base64
 import csv
+import datetime
 import hashlib
 import json
 import os
 import random
-import re
 import string
+import time
 import uuid
-import argparse
+from urllib.parse import parse_qs, urlparse
 from collections import defaultdict
 from dataclasses import dataclass
-from urllib.parse import urlparse
-import datetime
 import requests
 from bs4 import BeautifulSoup
 from dotenv import load_dotenv
 from fake_useragent import UserAgent
-from future.backports.urllib.parse import parse_qs
-from rich import print_json, print
+from rich import print
 from rich.console import Console
-import time
 
 from medihunter_notifiers import pushbullet_notify, pushover_notify, telegram_notify, gotify_notify
 
@@ -101,8 +99,29 @@ class Authenticator:
         response = self.session.post(next_url, data=login_data, headers=self.headers, allow_redirects=False)
         next_url = response.headers.get("Location")
 
+        # Step 3.5: Handle MFA gate — skip the "enable MFA" prompt
+        if next_url and "MfaGate" in next_url:
+            mfa_url = f"{login_url}{next_url}" if next_url.startswith("/") else next_url
+            response = self.session.get(mfa_url, headers=self.headers, allow_redirects=False)
+            soup = BeautifulSoup(response.content, "html.parser")
+            mfa_csrf_input = soup.find("input", {"name": "__RequestVerificationToken"})
+            mfa_csrf_token = mfa_csrf_input.get("value") if mfa_csrf_input else None
+            return_url_input = soup.find("input", {"name": "Input.ReturnUrl"})
+            return_url_value = return_url_input.get("value") if return_url_input else f"/connect/authorize/callback{auth_params}"
+            mfa_data = {
+                "__RequestVerificationToken": mfa_csrf_token,
+                "Input.ReturnUrl": return_url_value,
+            }
+            skip_url = f"{login_url}/Account/MfaGate?handler=SkipMfaGate"
+            response = self.session.post(skip_url, data=mfa_data, headers=self.headers, allow_redirects=False)
+            if response.status_code not in {301, 302, 303, 307, 308}:
+                console.print(f"[bold red]MfaGate skip failed {response.status_code}[/bold red]\n{response.text[:500]}")
+                raise ValueError(f"MfaGate POST failed with status {response.status_code}")
+            next_url = response.headers.get("Location")
+
         # Step 4: Fetch authorization code
-        response = self.session.get(f"{login_url}{next_url}", headers=self.headers, allow_redirects=False)
+        step4_url = f"{login_url}{next_url}" if next_url and next_url.startswith("/") else next_url
+        response = self.session.get(step4_url, headers=self.headers, allow_redirects=False)
         next_url = response.headers.get("Location")
         code = parse_qs(urlparse(next_url).query)["code"][0]
 
@@ -118,6 +137,7 @@ class Authenticator:
         tokens = response.json()
         self.tokenA = tokens["access_token"]
         self.headers["Authorization"] = f"Bearer {self.tokenA}"
+
 
 class AppointmentFinder:
     def __init__(self, session, headers):
