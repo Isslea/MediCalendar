@@ -123,6 +123,10 @@ class Authenticator:
         step4_url = f"{login_url}{next_url}" if next_url and next_url.startswith("/") else next_url
         response = self.session.get(step4_url, headers=self.headers, allow_redirects=False)
         next_url = response.headers.get("Location")
+        console.print(f"[yellow]After MfaGate skip → {next_url}[/yellow]")
+        if not next_url or "code" not in parse_qs(urlparse(next_url).query):
+            console.print(f"[bold red]Login failed — unexpected redirect: {next_url}[/bold red]")
+            raise ValueError(f"Authorization code not found. Got redirect: {next_url}")
         code = parse_qs(urlparse(next_url).query)["code"][0]
 
         # Step 5: Exchange code for tokens
