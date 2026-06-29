@@ -1,25 +1,26 @@
 #!/usr/bin/python3
 
-import argparse
 import base64
 import csv
-import datetime
 import hashlib
 import json
 import os
 import random
+import re
 import string
-import time
 import uuid
-from urllib.parse import parse_qs, urlparse
+import argparse
 from collections import defaultdict
 from dataclasses import dataclass
+from urllib.parse import parse_qs, urlparse
+import datetime
 import requests
 from bs4 import BeautifulSoup
 from dotenv import load_dotenv
 from fake_useragent import UserAgent
-from rich import print
+from rich import print_json, print
 from rich.console import Console
+import time
 
 from medihunter_notifiers import pushbullet_notify, pushover_notify, telegram_notify, gotify_notify
 
@@ -39,7 +40,6 @@ class User:
 #users
 users = [
     User("Klaudia", "MEDICOVER_USER", "MEDICOVER_PASS", "NOTIFIERS_TELEGRAM_CHAT_ID", "NOTIFIERS_TELEGRAM_TOKEN", "params.csv"),
-    User("Ksenia", "MEDICOVER_USER_KSENIA", "MEDICOVER_PASS_KSENIA", "NOTIFIERS_TELEGRAM_CHAT_ID_KSENIA", "NOTIFIERS_TELEGRAM_TOKEN_KSENIA", "params_ksenia.csv"),
 ]
 
 class Authenticator:
@@ -47,6 +47,8 @@ class Authenticator:
         self.username = username
         self.password = password
         self.session = requests.Session()
+        self.mfa_used_in_this_run = False
+        self.load_cookies()
         self.headers = {
             "User-Agent": UserAgent().random,
             "Accept": "application/json",
@@ -54,13 +56,130 @@ class Authenticator:
         }
         self.tokenA = None
 
+    def load_cookies(self):
+        env_cookies_b64 = os.environ.get("MEDICZUWACZ_COOKIES_B64")
+        if not env_cookies_b64:
+            return
+
+        try:
+            cookie_text = base64.b64decode(env_cookies_b64.encode("utf-8")).decode("utf-8")
+        except Exception as exc:
+            console.print(f"[yellow]Warning: could not decode cookies from env: {exc}[/yellow]")
+            return
+
+        for line in cookie_text.splitlines():
+            if not line or line.startswith("#"):
+                continue
+
+            parts = line.split("\t")
+            if len(parts) != 7:
+                continue
+
+            domain, _subdomains, path, secure, expires, name, value = parts
+            try:
+                cookie = requests.cookies.create_cookie(
+                    domain=domain,
+                    path=path,
+                    secure=(secure.upper() == "TRUE"),
+                    expires=int(expires) if expires else None,
+                    name=name,
+                    value=value,
+                )
+                self.session.cookies.set_cookie(cookie)
+            except Exception as exc:
+                console.print(f"[yellow]Warning: could not load one cookie from env: {exc}[/yellow]")
+
+    def get_device_id(self):
+        env_device_id = os.environ.get("MEDICZUWACZ_DEVICE_ID")
+        if env_device_id:
+            return env_device_id.strip()
+        return str(uuid.uuid4())
+
+    def print_next_run_env(self):
+        cookies_lines = [
+            "# Netscape HTTP Cookie File",
+            "# http://curl.haxx.se/rfc/cookie_spec.html",
+            "# This is a generated file!  Do not edit.",
+            "",
+        ]
+        for cookie in self.session.cookies:
+            cookies_lines.append(
+                "\t".join(
+                    [
+                        cookie.domain or "",
+                        "TRUE" if cookie.domain_initial_dot else "FALSE",
+                        cookie.path or "/",
+                        "TRUE" if cookie.secure else "FALSE",
+                        str(int(cookie.expires)) if cookie.expires else "",
+                        cookie.name,
+                        cookie.value,
+                    ]
+                )
+            )
+        cookies_b64 = base64.b64encode("\n".join(cookies_lines).encode("utf-8")).decode("utf-8")
+        console.print("[bold green]Use these env values next time[/bold green]")
+        console.print(f"MEDICZUWACZ_DEVICE_ID={os.environ.get('MEDICZUWACZ_DEVICE_ID') or self.current_device_id}")
+        console.print(f"MEDICZUWACZ_COOKIES_B64={cookies_b64}")
+
+    def exchange_code(self, login_url, redirect_uri, code, code_verifier):
+        token_data = {
+            "grant_type": "authorization_code",
+            "redirect_uri": redirect_uri,
+            "code": code,
+            "code_verifier": code_verifier,
+            "client_id": "web",
+        }
+        response = self.session.post(f"{login_url}/connect/token", data=token_data, headers=self.headers)
+        tokens = response.json()
+        self.tokenA = tokens["access_token"]
+        self.headers["Authorization"] = f"Bearer {self.tokenA}"
+        if self.mfa_used_in_this_run:
+            self.print_next_run_env()
+
+    def handle_mfa(self, response, mfa_url, login_url):
+        soup = BeautifulSoup(response.content, "html.parser")
+        error_div = soup.find("div", class_="alert-error")
+        if error_div:
+            error_msg = error_div.get_text(strip=True)
+            raise ValueError(f"MFA error: {error_msg}")
+
+        form = soup.find("form")
+        if not form:
+            raise ValueError("Could not find MFA form on the page")
+
+        form_action = form.get("action", "")
+        post_url = f"{login_url}{form_action}" if form_action.startswith("/") else (form_action or mfa_url)
+
+        form_data = {}
+        for hidden in form.find_all("input", {"type": "hidden"}):
+            name = hidden.get("name")
+            if name:
+                form_data[name] = hidden.get("value", "")
+
+        console.print(f"[bold yellow]2FA code required ({form_data.get('Input.Channel', 'unknown')})[/bold yellow]")
+        mfa_code = input("Enter your 2FA code: ").strip()
+        if not mfa_code:
+            raise ValueError("No 2FA code provided")
+        self.mfa_used_in_this_run = True
+
+        form_data["Input.MfaCode"] = mfa_code
+        form_data["Input.IsTrustedDevice"] = "true"
+        form_data["Input.DeviceName"] = "Chrome"
+        form_data["Input.Button"] = "confirm"
+
+        response = self.session.post(post_url, data=form_data, headers=self.headers, allow_redirects=False)
+        if response.status_code not in {301, 302, 303, 307, 308}:
+            raise ValueError(f"MFA verification failed with status {response.status_code}")
+        return response.headers.get("Location")
+
     def generate_code_challenge(self, input):
         sha256 = hashlib.sha256(input.encode("utf-8")).digest()
         return base64.urlsafe_b64encode(sha256).decode("utf-8").rstrip("=")
 
     def login(self):
         state = "".join(random.choices(string.ascii_lowercase + string.digits, k=32))
-        device_id = str(uuid.uuid4())
+        device_id = self.get_device_id()
+        self.current_device_id = device_id
         code_verifier = "".join(uuid.uuid4().hex for _ in range(3))
         code_challenge = self.generate_code_challenge(code_verifier)
         epoch_time = int(time.time()) * 1000
@@ -77,6 +196,11 @@ class Authenticator:
         # Step 1: Initialize login
         response = self.session.get(f"{login_url}/connect/authorize{auth_params}", headers=self.headers, allow_redirects=False)
         next_url = response.headers.get("Location")
+
+        if next_url and "code=" in next_url:
+            code = parse_qs(urlparse(next_url).query)["code"][0]
+            self.exchange_code(login_url, oidc_redirect, code, code_verifier)
+            return
 
         # Step 2: Extract CSRF token
         response = self.session.get(next_url, headers=self.headers, allow_redirects=False)
@@ -99,49 +223,22 @@ class Authenticator:
         response = self.session.post(next_url, data=login_data, headers=self.headers, allow_redirects=False)
         next_url = response.headers.get("Location")
 
-        # Step 3.5: Handle MFA gate — skip the "enable MFA" prompt
-        if next_url and "MfaGate" in next_url:
+        if next_url and "/Mfa" in next_url:
             mfa_url = f"{login_url}{next_url}" if next_url.startswith("/") else next_url
             response = self.session.get(mfa_url, headers=self.headers, allow_redirects=False)
-            soup = BeautifulSoup(response.content, "html.parser")
-            mfa_csrf_input = soup.find("input", {"name": "__RequestVerificationToken"})
-            mfa_csrf_token = mfa_csrf_input.get("value") if mfa_csrf_input else None
-            return_url_input = soup.find("input", {"name": "Input.ReturnUrl"})
-            return_url_value = return_url_input.get("value") if return_url_input else f"/connect/authorize/callback{auth_params}"
-            mfa_data = {
-                "__RequestVerificationToken": mfa_csrf_token,
-                "Input.ReturnUrl": return_url_value,
-            }
-            skip_url = f"{login_url}/Account/MfaGate?handler=SkipMfaGate"
-            response = self.session.post(skip_url, data=mfa_data, headers=self.headers, allow_redirects=False)
-            if response.status_code not in {301, 302, 303, 307, 308}:
-                console.print(f"[bold red]MfaGate skip failed {response.status_code}[/bold red]\n{response.text[:500]}")
-                raise ValueError(f"MfaGate POST failed with status {response.status_code}")
-            next_url = response.headers.get("Location")
+            if response.status_code in {301, 302, 303, 307, 308}:
+                next_url = response.headers.get("Location")
+            else:
+                next_url = self.handle_mfa(response, mfa_url, login_url)
 
         # Step 4: Fetch authorization code
         step4_url = f"{login_url}{next_url}" if next_url and next_url.startswith("/") else next_url
         response = self.session.get(step4_url, headers=self.headers, allow_redirects=False)
         next_url = response.headers.get("Location")
-        console.print(f"[yellow]After MfaGate skip → {next_url}[/yellow]")
-        if not next_url or "code" not in parse_qs(urlparse(next_url).query):
-            console.print(f"[bold red]Login failed — unexpected redirect: {next_url}[/bold red]")
-            raise ValueError(f"Authorization code not found. Got redirect: {next_url}")
         code = parse_qs(urlparse(next_url).query)["code"][0]
 
         # Step 5: Exchange code for tokens
-        token_data = {
-            "grant_type": "authorization_code",
-            "redirect_uri": oidc_redirect,
-            "code": code,
-            "code_verifier": code_verifier,
-            "client_id": "web",
-        }
-        response = self.session.post(f"{login_url}/connect/token", data=token_data, headers=self.headers)
-        tokens = response.json()
-        self.tokenA = tokens["access_token"]
-        self.headers["Authorization"] = f"Bearer {self.tokenA}"
-
+        self.exchange_code(login_url, oidc_redirect, code, code_verifier)
 
 class AppointmentFinder:
     def __init__(self, session, headers):
@@ -347,7 +444,7 @@ def main():
     print("jestem init")
     docker_path = '/app/shared'
     filename_doctors = f'{docker_path}/doctor_data.json'
-    #filename_doctors = 'doctor_data.json'
+    filename_doctors = 'doctor_data.json'
 
     while True:
         print("jestem while")
