@@ -7,8 +7,10 @@ no,176,534808,alergolog - Trąd,2
 no,192,103910,laryngolog - Wrobel,3
 no,192,204600,laryngolog - Ryncarz,2
 no,192,238248,laryngolog - Honowska,1
-no,1586,329470,internista - Pięta,3
-no,519,103772,sutka/tarczyca - wladim,3
+yes,9,417334,internista - Cienawski,3
+yes,9,642702,internista - Filus,2
+yes,9,377844,internista - Bomba,1
+yes,519,103772,sutka/tarczyca - wladim,3
 no,519,373860,sutka - stepien bogna,3
 no,519,384596,tarczyca - wisniewski,2
 no,519,103642,tarczyca - kwater,2
@@ -21,4 +23,4 @@ no,4798,499580,test Bojar,3
 no,55522,,grypa telefon,3
 no,19046,,internista telefon,3
 no,32818,,ginekolog telefon,1
-yes,23504,,stomatolog leczenie,
+yes,23504,,stomatolog leczenie
