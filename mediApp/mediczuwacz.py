@@ -444,7 +444,7 @@ def main():
     print("jestem init")
     docker_path = '/app/shared'
     filename_doctors = f'{docker_path}/doctor_data.json'
-    filename_doctors = 'doctor_data.json'
+    #filename_doctors = 'doctor_data.json'
 
     while True:
         print("jestem while")
