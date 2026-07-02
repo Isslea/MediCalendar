@@ -6709,6 +6709,30 @@
         {
             "appointmentDate": "2026-07-03T08:45:00",
             "reminderCount": 1
+        },
+        {
+            "appointmentDate": "2026-07-03T09:00:00",
+            "reminderCount": 1
+        },
+        {
+            "appointmentDate": "2026-07-03T09:45:00",
+            "reminderCount": 1
+        },
+        {
+            "appointmentDate": "2026-07-03T10:00:00",
+            "reminderCount": 1
+        },
+        {
+            "appointmentDate": "2026-07-03T10:45:00",
+            "reminderCount": 1
+        },
+        {
+            "appointmentDate": "2026-07-03T11:45:00",
+            "reminderCount": 1
+        },
+        {
+            "appointmentDate": "2026-07-03T12:00:00",
+            "reminderCount": 1
         }
     ],
     "Klaudia_417334": [
@@ -6718,11 +6742,11 @@
         },
         {
             "appointmentDate": "2026-07-23T10:30:00",
-            "reminderCount": 21
+            "reminderCount": 22
         },
         {
             "appointmentDate": "2026-07-23T10:45:00",
-            "reminderCount": 21
+            "reminderCount": 22
         },
         {
             "appointmentDate": "2026-07-23T11:00:00",
@@ -6730,11 +6754,11 @@
         },
         {
             "appointmentDate": "2026-07-23T13:45:00",
-            "reminderCount": 21
+            "reminderCount": 22
         },
         {
             "appointmentDate": "2026-07-23T14:15:00",
-            "reminderCount": 12
+            "reminderCount": 13
         },
         {
             "appointmentDate": "2026-07-23T14:30:00",
@@ -6742,7 +6766,7 @@
         },
         {
             "appointmentDate": "2026-07-27T12:15:00",
-            "reminderCount": 18
+            "reminderCount": 19
         },
         {
             "appointmentDate": "2026-07-27T14:15:00",
@@ -6754,7 +6778,7 @@
         },
         {
             "appointmentDate": "2026-07-23T09:30:00",
-            "reminderCount": 14
+            "reminderCount": 15
         },
         {
             "appointmentDate": "2026-07-02T11:30:00",
