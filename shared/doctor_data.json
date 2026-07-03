@@ -6733,6 +6733,46 @@
         {
             "appointmentDate": "2026-07-03T12:00:00",
             "reminderCount": 3
+        },
+        {
+            "appointmentDate": "2026-07-17T10:15:00",
+            "reminderCount": 1
+        },
+        {
+            "appointmentDate": "2026-07-17T10:30:00",
+            "reminderCount": 1
+        },
+        {
+            "appointmentDate": "2026-07-17T12:30:00",
+            "reminderCount": 1
+        },
+        {
+            "appointmentDate": "2026-07-17T13:15:00",
+            "reminderCount": 1
+        },
+        {
+            "appointmentDate": "2026-07-17T14:00:00",
+            "reminderCount": 1
+        },
+        {
+            "appointmentDate": "2026-07-24T10:15:00",
+            "reminderCount": 1
+        },
+        {
+            "appointmentDate": "2026-07-24T10:30:00",
+            "reminderCount": 1
+        },
+        {
+            "appointmentDate": "2026-07-24T12:30:00",
+            "reminderCount": 1
+        },
+        {
+            "appointmentDate": "2026-07-24T13:15:00",
+            "reminderCount": 1
+        },
+        {
+            "appointmentDate": "2026-07-24T14:00:00",
+            "reminderCount": 1
         }
     ],
     "Klaudia_417334": [
@@ -6746,7 +6786,7 @@
         },
         {
             "appointmentDate": "2026-07-23T10:45:00",
-            "reminderCount": 25
+            "reminderCount": 26
         },
         {
             "appointmentDate": "2026-07-23T11:00:00",
@@ -6754,11 +6794,11 @@
         },
         {
             "appointmentDate": "2026-07-23T13:45:00",
-            "reminderCount": 25
+            "reminderCount": 26
         },
         {
             "appointmentDate": "2026-07-23T14:15:00",
-            "reminderCount": 16
+            "reminderCount": 17
         },
         {
             "appointmentDate": "2026-07-23T14:30:00",
@@ -6766,7 +6806,7 @@
         },
         {
             "appointmentDate": "2026-07-27T12:15:00",
-            "reminderCount": 22
+            "reminderCount": 23
         },
         {
             "appointmentDate": "2026-07-27T14:15:00",
