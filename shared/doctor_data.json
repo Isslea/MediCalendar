@@ -6,7 +6,7 @@
         },
         {
             "appointmentDate": "2026-07-23T10:30:00",
-            "reminderCount": 2
+            "reminderCount": 3
         },
         {
             "appointmentDate": "2026-08-03T14:30:00",
@@ -14,7 +14,7 @@
         },
         {
             "appointmentDate": "2026-08-10T08:15:00",
-            "reminderCount": 15
+            "reminderCount": 16
         },
         {
             "appointmentDate": "2026-08-10T09:45:00",
@@ -22,11 +22,11 @@
         },
         {
             "appointmentDate": "2026-08-10T12:15:00",
-            "reminderCount": 15
+            "reminderCount": 16
         },
         {
             "appointmentDate": "2026-08-10T14:30:00",
-            "reminderCount": 15
+            "reminderCount": 16
         },
         {
             "appointmentDate": "2026-08-03T12:15:00",
@@ -34,11 +34,11 @@
         },
         {
             "appointmentDate": "2026-07-23T11:30:00",
-            "reminderCount": 2
+            "reminderCount": 3
         },
         {
             "appointmentDate": "2026-08-10T09:30:00",
-            "reminderCount": 1
+            "reminderCount": 2
         }
     ],
     "Klaudia_103772": [
@@ -76,7 +76,7 @@
         },
         {
             "appointmentDate": "2026-08-24T08:15:00",
-            "reminderCount": 3
+            "reminderCount": 4
         },
         {
             "appointmentDate": "2026-08-24T09:45:00",
@@ -84,15 +84,15 @@
         },
         {
             "appointmentDate": "2026-08-24T10:00:00",
-            "reminderCount": 3
+            "reminderCount": 4
         },
         {
             "appointmentDate": "2026-08-24T10:45:00",
-            "reminderCount": 3
+            "reminderCount": 4
         },
         {
             "appointmentDate": "2026-08-24T11:45:00",
-            "reminderCount": 3
+            "reminderCount": 4
         },
         {
             "appointmentDate": "2026-08-24T12:00:00",
@@ -100,7 +100,7 @@
         },
         {
             "appointmentDate": "2026-08-24T13:45:00",
-            "reminderCount": 3
+            "reminderCount": 4
         }
     ]
 }
