@@ -58,7 +58,7 @@
         },
         {
             "appointmentDate": "2026-08-17T09:45:00",
-            "reminderCount": 66
+            "reminderCount": 67
         },
         {
             "appointmentDate": "2026-08-17T12:15:00",
@@ -138,15 +138,15 @@
         },
         {
             "appointmentDate": "2026-08-17T14:15:00",
-            "reminderCount": 6
+            "reminderCount": 7
         },
         {
             "appointmentDate": "2026-07-30T11:00:00",
-            "reminderCount": 3
+            "reminderCount": 4
         },
         {
             "appointmentDate": "2026-07-30T10:45:00",
-            "reminderCount": 1
+            "reminderCount": 2
         }
     ],
     "Klaudia_103772": [
