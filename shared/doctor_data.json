@@ -58,7 +58,7 @@
         },
         {
             "appointmentDate": "2026-08-17T09:45:00",
-            "reminderCount": 69
+            "reminderCount": 70
         },
         {
             "appointmentDate": "2026-08-17T12:15:00",
@@ -98,19 +98,19 @@
         },
         {
             "appointmentDate": "2026-08-24T08:15:00",
-            "reminderCount": 9
+            "reminderCount": 10
         },
         {
             "appointmentDate": "2026-08-24T09:45:00",
-            "reminderCount": 9
+            "reminderCount": 10
         },
         {
             "appointmentDate": "2026-08-24T12:15:00",
-            "reminderCount": 9
+            "reminderCount": 10
         },
         {
             "appointmentDate": "2026-08-24T14:30:00",
-            "reminderCount": 9
+            "reminderCount": 10
         },
         {
             "appointmentDate": "2026-07-27T10:15:00",
