@@ -138,7 +138,7 @@
         },
         {
             "appointmentDate": "2026-08-17T14:15:00",
-            "reminderCount": 12
+            "reminderCount": 13
         },
         {
             "appointmentDate": "2026-07-30T11:00:00",
@@ -206,19 +206,19 @@
         },
         {
             "appointmentDate": "2026-08-27T09:45:00",
-            "reminderCount": 54
+            "reminderCount": 55
         },
         {
             "appointmentDate": "2026-08-27T10:45:00",
-            "reminderCount": 54
+            "reminderCount": 55
         },
         {
             "appointmentDate": "2026-08-27T11:00:00",
-            "reminderCount": 54
+            "reminderCount": 55
         },
         {
             "appointmentDate": "2026-08-27T11:30:00",
-            "reminderCount": 54
+            "reminderCount": 55
         },
         {
             "appointmentDate": "2026-08-27T13:45:00",
@@ -282,7 +282,7 @@
         },
         {
             "appointmentDate": "2026-08-27T14:15:00",
-            "reminderCount": 5
+            "reminderCount": 6
         }
     ],
     "Klaudia_103772": [
